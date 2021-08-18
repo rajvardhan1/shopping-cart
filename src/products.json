@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "title": "Winter body",
+        "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
+        "price": 40,
+        "img": "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1619487269-tr3mmst080-shoe-angle-global-mens-tree-runner-mist-white-b11537e4-5c45-4443-a1dd-c70c31779715-png-1619487255.jpg?crop=1xw:1xh;center,top&resize=480:*",
+        "quantity": 1
+    },
+    {
+        "id": 2,
+        "title": "Adidas",
+        "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
+        "price": 70,
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv3B-GheKJbqV1aQhLGvuFqWgNbZLGWqt_gAfiiB27c1tLrP4zgyv2JRnQVJu6m3qclvI&usqp=CAU",
+        "quantity": 1
+    },
+    {
+        "id": 3,
+        "title": "Vans",
+        "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
+        "price": 500,
+        "img": "https://cdn.shopify.com/s/files/1/0236/3431/3280/files/a02_370x230@2x.jpg?v=1603564161",
+        "quantity": 1
+    },
+    {
+        "id": 4,
+        "title": "White",
+        "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
+        "price": 55,
+        "img": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_450,h_450/global/380353/01/sv01/fnd/IND/fmt/png",
+        "quantity": 1
+    },
+    {
+        "id": 5,
+        "title": "Cropped-sho",
+        "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
+        "price": 30,
+        "img": "https://post.medicalnewstoday.com/wp-content/uploads/2021/05/1144163-987539-The-Top-7-Altra-Running-Shoes-of-2021-732x549-feature.jpg",
+        "quantity": 1
+    },
+    {
+        "id": 6,
+        "title": "Blues",
+        "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
+        "price": 30,
+        "img": "https://i.ytimg.com/vi/YetO6_gRoCw/hqdefault.jpg",
+        "quantity": 1
+    }
+]

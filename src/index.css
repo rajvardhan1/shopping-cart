@@ -1,0 +1,39 @@
+.box{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.card {
+  width: 300px;
+}
+
+.card .card-image .card-title {
+  color: black;
+  font-weight: 400;
+}
+
+.cart {
+  margin-top: 40px;
+}
+
+.collection .collection-product {
+  display: flex;
+}
+
+.collection-product.avatar .title {
+  display: block;
+  font-size: 20px;
+  font-weight: 500px;
+  color: #ee6e73;
+  margin-bottom: 20px;
+}
+
+.collection .collection-product img{
+  width: 150px;
+  margin-right: 25px;
+}
+
+.product-desc {
+  align-self: center;
+}
