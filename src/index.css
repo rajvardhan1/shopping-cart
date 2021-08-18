@@ -37,3 +37,42 @@
 .product-desc {
   align-self: center;
 }
+
+.checkout-form{
+  margin: 85px 377px;
+  width: 35%;
+  padding: 14px;
+  background-color: aliceblue;
+}
+
+.checkout-input{
+  width: 300px;
+}
+
+.checkout-card{
+  /* box-shadow: gainsboro 0px 0px 10px 10px; */
+  width: 100%;
+  border: 1px solid;
+}
+
+.checkout-btn{
+  width: 60% !important;
+  margin-left: 120px !important;
+  background-color: #82B1FF !important;
+}
+.order-card{
+  width: 20% !important;
+  margin-left: 1029px;
+  margin-top: -575px;
+}
+.summary-card{
+  background-color: aliceblue ;
+  padding: 5px 10px 10px;
+  margin-left: 10px;
+}
+.details-card{
+  margin-top: 10px;
+}
+.checkout-text{
+  font-size: 20px !important;
+}
