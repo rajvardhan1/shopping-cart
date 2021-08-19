@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Context } from './../contexts/cartContext'
 
 export default function Product(props) {
-
+  
   const { product } = props
   const { addToCart, cartIds, removeFromCart } = useContext(Context)
 

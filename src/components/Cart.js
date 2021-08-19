@@ -147,6 +147,7 @@ export default function Cart() {
                     <p>{product.desc}</p>
                     <p><b>Price: {product.price}$</b></p>
                     <p>
+                    {console.log('product',product.price)}
                       <b>Quantity: {product.quantity}</b>
                     </p>
                     <div className="add-remove">

@@ -1,0 +1,149 @@
+.hindu-hero-bg {
+    background: url(../../assets/homepage_brands_bg_img.jpg);
+    background-repeat: no-repeat;
+    height: 708px;
+    margin-top: -6px;
+    width: 1838px;
+    top: 72%;
+    opacity: 0.92;
+}
+.hero-btn {
+    border: 2px solid #ddd;
+    padding: 10px 40px;
+    background: #fff;
+    color: #333 !important;
+    border-radius: 25px;
+}
+.hero-btn:hover{
+    background-color: #82B1FF;
+    color: white !important;
+}
+a{
+    color: #333 !important;
+}
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.container:after, .container:before {
+    display: table !important;
+    content: " ";
+}
+ .flexbox {
+    display: flex;
+    padding: 65px 0 !important;
+    -webkit-flex-wrap: wrap !important;
+    -moz-flex-wrap: wrap !important;
+    -ms-flex-wrap: wrap !important;
+    flex-wrap: wrap !important;
+    -webkit-box-pack: center !important;
+    -ms-flex-pack: center !important;
+    -webkit-justify-content: center !important;
+    -moz-justify-content: center !important;
+    justify-content: center !important;
+}
+.item{
+    margin-top: 69px;
+    text-align: center;     
+}
+.hero-boder-top {
+    position: relative;
+    margin-top: 150px;
+}
+.hero-boder-top::after {
+    content: url(../../assets/border-top.png);
+    left: 50%;
+    bottom: 100%;
+    position: absolute;
+}
+.scheme_1 #swiper .swiper-slide .textblock1 {
+    float: left !important;
+    width: 40% !important;
+}
+.slider_caption {
+    padding: 10px;
+    position: absolute;
+    left: 50%;
+    top: 46% !important;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    display: flex;
+}
+.textblock1 h2 {
+    margin: 0;
+    font-size: 80px;
+    color: #fff !important;
+    /* margin-top: -17% !important; */
+}
+.textblock1 h3 {
+    margin: -3px 0 0;
+    font-size: 40px;
+    color: #82B1FF !important;
+}
+.textblock2 {
+    float: right;
+    width: 40%;
+    color: #fff !important;
+    margin-left: 362px;
+}
+.textblock1 h1, .textblock1 h2, .textblock1 h3, .scheme_1 h4, .scheme_1 h5, .scheme_1 h6, .textblock2 h2{
+    margin: 15px 0;
+    font: bold 40px Roboto Condensed;
+    line-height: 1.12;
+    text-transform: uppercase;
+    font-style: italic;
+}
+.textblock1 img {
+    margin-top: 66px;
+}
+
+.product_item {
+    margin: 25px 0 0 0;
+}
+.product_listing__main{
+    display: flex;
+    justify-content: space-around;
+}
+.product_listing__main .product_img {
+    position: relative;
+    border: 1px solid #f0f0f0;
+}
+.product_listing__main .product_img .img_change {
+    display: block;
+    position: relative;
+}
+
+.product_name {
+    padding: 20px 0 0 0;
+    text-align: center;
+    font-size: 14px;
+    color: #383838;
+}
+.product_prop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+.product_price {
+    padding-top: 10px;
+}
+.money, .money_like {
+    font-size: 14px;
+    color: #e2bcaf;
+}
+.section_heading {
+    padding-bottom: 0;
+}
+.section_heading {
+    margin: 0;
+    font-size: 24px;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    font-weight: 400;
+    letter-spacing: .2em;
+    background-color: rgba(0,0,0,0);
+    text-align: center;
+}

@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
-import Shoes from './checkout.jpg'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'
+import products from '../products.json';
 
-export default function Checkout(){
+export default function Checkout(props){
   const [userInfo, setUserInfo] = useState({
     First_name:'',
     Last_name:'',
@@ -13,6 +13,31 @@ export default function Checkout(){
     Zip: '',
     Phone_number:''
   })
+  
+  const { productDetails } = props
+
+  console.log('props',props)
+  // const getData=()=>{
+  //   fetch('product.json'
+  //   ,{
+  //     headers : { 
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json'
+  //      }
+  //   }
+  //   )
+  //     .then(function(response){
+  //       console.log(response)
+  //       return response.json();
+  //     })
+  //     .then(function(myJson) {
+  //       console.log(myJson);
+  //     });
+  // }
+
+  // useEffect(()=>{
+  //   getData()
+  // },[])
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -101,9 +126,22 @@ export default function Checkout(){
               <span>$67</span> 
             </div>
             </div>
-            <div className="summary-card details-card">
+            <div className="summary-card details-card dc">
             <span className="checkout-text">Order Details</span><br/>
-                <img src={Shoes} style={{width:'25%',margin:'7px'}}></img>
+            {products.map((product)=>{
+              return(
+                <>
+                <div className="box details-card">
+                <img src={product.img} alt={product.img} style={{width:'25%',margin:'7px'}}></img>
+                <span >{product.title}</span><br/>
+                </div>
+                <div className="checkout-details"> 
+                  <span >{product.desc}</span><br/>
+                  <span > ${product.price}.00</span><br/>
+                </div>
+                </>
+              )
+              })}
             </div>
         </div>
     </div>

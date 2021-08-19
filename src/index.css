@@ -3,7 +3,11 @@
     justify-content: space-between;
     flex-wrap: wrap;
 }
-
+body{
+  overflow-x: hidden !important;
+  height: 700px !important;
+  overflow-y: scroll !important;
+}
 .card {
   width: 300px;
 }
@@ -39,7 +43,7 @@
 }
 
 .checkout-form{
-  margin: 85px 377px;
+  margin: 145px 377px;
   width: 35%;
   padding: 14px;
   background-color: aliceblue;
@@ -63,7 +67,7 @@
 .order-card{
   width: 20% !important;
   margin-left: 1029px;
-  margin-top: -575px;
+  margin-top: -635px;
 }
 .summary-card{
   background-color: aliceblue ;
@@ -73,6 +77,20 @@
 .details-card{
   margin-top: 10px;
 }
+.dc{
+    text-align: left;
+    overflow-y: scroll;
+    height: 339px;
+}
 .checkout-text{
   font-size: 20px !important;
+}
+.checkout-details{
+  width: 150px;
+  margin-left: 176px;
+  margin-top: -73px;
+  font-size: 11px;
+}
+nav-wrapper {
+  overflow-y: hidden;
 }
