@@ -27,8 +27,6 @@ export default function Cart() {
   const [total, setTotal] = useState(0)
   const { cart } = useContext(Context)
 
-  console.log(cart);
-
   const handlePayment = (token) => {
 
     let total = 0;
@@ -173,13 +171,15 @@ export default function Cart() {
           <button className="waves-effect waves-light btn green">Pay Now</button>
         </StripeCheckout>
       </div>
-      <div>
+      <div className="payment-btn">  
         <button
           className="waves-effect waves-light btn green"
           style={{ marginTop: '10px' }}
           onClick={handlePayuPayment}
-        >PayU</button>
+        >PayU
+        </button>
       </div>
+
     </div>
   )
 }
