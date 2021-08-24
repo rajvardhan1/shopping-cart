@@ -8,7 +8,7 @@ export const Home = () => {
             <div class="swiper-wrapper" style={{msTransitionDuration: '0ms'}}>
               <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" style={{width: '1838px', transform: 'translate3d(0px, 0px, 0px)', opacity: '1', transitionDuration: "0ms"}}>
                 <a href="/collections/lifestyle-collection">
-                  <img src="https://cdn.shopify.com/s/files/1/1774/5405/t/2/assets/slide2_image.jpg?v=8343108823645162859" alt="" height='650px' width='1838px' style={{marginTop:"-13px"}}/>
+                  <img src="https://cdn.shopify.com/s/files/1/1774/5405/t/2/assets/slide2_image.jpg?v=8343108823645162859" alt="" height='650px' width='1838px'/>
                   
                     <div class="slider_caption container">
                       <div class="textblock1">
@@ -67,9 +67,9 @@ export const Home = () => {
                     <img src="//cdn.shopify.com/s/files/1/1774/5405/t/2/assets/homepage_brand6.png?v=8052089820207484125" alt="saucony"/>   
                   </a>    
                 </div>
-                <div class="ht-btn-area hero-boder-top">
+                {/* <div class="ht-btn-area hero-boder-top">
                   <a  class="hero-btn" ><Link to="/">Explore</Link></a>
-              </div>
+              </div> */}
               </div>
               </div>
             </div>
@@ -77,7 +77,7 @@ export const Home = () => {
            </div>
           </div>
           <div className="container">
-            <h2 class="section_heading">specials</h2>
+            <h2 className="section_heading mt-2">specials</h2>
             <div class="row product_listing__main">
               <div className="col-xs-4 item_3_1 item_2_1">
                 <div className="product_item">

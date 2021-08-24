@@ -11,20 +11,23 @@ const Navbar = () => {
   return (
     <>
       <nav className="nav-wrapper blue accent-1">
-        <div className="container menu-area">
-          <Link to="/" className="brand-logo">Shopping</Link>
-
-          <ul className="right">
-            <li><Link to="/home">Home</Link></li>
-            <li><Link to="/">Shop</Link></li>
-            <li><Link to="/cart"><i className="material-icons">shopping_cart</i></Link></li>
-            {/* <li> Pay
-                <ul class="dropdown">
-                <li onClick={handleShow}>Stripe Payment</li>
-                <li onClick={handleShow}>Bluesnap Payment </li>
-              </ul>
-            </li> */}
-          </ul>
+        <div className="container">
+          <div className="col-4">
+            <Link to="/" className="brand-logo">Shopping</Link>
+          </div>
+          <div className="col-8">
+            <ul className="right">
+              <li><Link to="/home">Home</Link></li>
+              <li><Link to="/">Shop</Link></li>
+              <li><Link to="/cart" style={{margin:"6px"}}><i className="material-icons">shopping_cart</i></Link></li>
+              {/* <li> Pay
+                  <ul class="dropdown">
+                  <li onClick={handleShow}>Stripe Payment</li>
+                  <li onClick={handleShow}>Bluesnap Payment </li>
+                </ul>
+              </li> */}
+            </ul>
+          </div>
         </div>
       </nav>
       <PaymentModal
