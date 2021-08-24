@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
 import { Context } from './../contexts/cartContext'
+import PaymentModal from './Dialogs/PaymentModal';
 
 export default function Cart() {
 
@@ -26,6 +27,11 @@ export default function Cart() {
 
   const [total, setTotal] = useState(0)
   const { cart } = useContext(Context)
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handlePayment = (token) => {
 
@@ -128,58 +134,65 @@ export default function Cart() {
   }
 
   return (
-    <div className="container">
-      <div className="cart">
-        <h5>Your Cart :</h5>
-        <ul className="collection">
-          {
-            cart.map((product, index) => {
-              return (
-                <li className="collection-product avatar" key={product.id}>
-                  <div className="product-img">
-                    <img src={product.img} alt={product.img} className="" />
-                  </div>
-
-                  <div className="product-desc">
-                    <span className="title">{product.title}</span>
-                    <p>{product.desc}</p>
-                    <p><b>Price: {product.price}$</b></p>
-                    <p>
-                    {console.log('product',product.price)}
-                      <b>Quantity: {product.quantity}</b>
-                    </p>
-                    <div className="add-remove">
-                      <Link to="/cart"><i className="material-icons">arrow_drop_up</i></Link>
-                      <Link to="/cart"><i className="material-icons">arrow_drop_down</i></Link>
+    <>
+      <div className="container">
+        <div className="cart">
+          <h5>Your Cart :</h5>
+          <ul className="collection">
+            {
+              cart.map((product, index) => {
+                return (
+                  <li className="collection-product avatar" key={product.id}>
+                    <div className="product-img">
+                      <img src={product.img} alt={product.img} className="" />
                     </div>
-                    <button className="waves-effect waves-light btn pink remove">Remove</button>
-                  </div>
 
-                </li>
-              )
-            })
-          }
-        </ul>
-      </div>
-      <div>
-        <StripeCheckout
-          stripeKey={"pk_test_51JNbPvSB8bOa6XsJ6HMHPyDH7QEtbLFsDMYl6oAdMWvQt1pzIoueqGACWa2KddNUOrJMTzx7qnys0bTdHmDyx80f00kPn1Ej6L"}
-          token={handlePayment}
-          name="Stripe Payment"
-          amount={total * 100}
-        >
-          <button className="waves-effect waves-light btn green">Pay Now</button>
-        </StripeCheckout>
-      </div>
-      <div className="payment-btn">  
-        <button
-          className="waves-effect waves-light btn green"
-          style={{ marginTop: '10px' }}
-          onClick={handlePayuPayment}
-        >PayU
+                    <div className="product-desc">
+                      <span className="title">{product.title}</span>
+                      <p>{product.desc}</p>
+                      <p><b>Price: {product.price}$</b></p>
+                      <p>
+                        {console.log('product', product.price)}
+                        <b>Quantity: {product.quantity}</b>
+                      </p>
+                      <div className="add-remove">
+                        <Link to="/cart"><i className="material-icons">arrow_drop_up</i></Link>
+                        <Link to="/cart"><i className="material-icons">arrow_drop_down</i></Link>
+                      </div>
+                      <button className="waves-effect waves-light btn pink remove">Remove</button>
+                    </div>
+
+                  </li>
+                )
+              })
+            }
+          </ul>
+        </div>
+        <div>
+          <StripeCheckout
+            stripeKey={"pk_test_51JNbPvSB8bOa6XsJ6HMHPyDH7QEtbLFsDMYl6oAdMWvQt1pzIoueqGACWa2KddNUOrJMTzx7qnys0bTdHmDyx80f00kPn1Ej6L"}
+            token={handlePayment}
+            name="Stripe Payment"
+            amount={total * 100}
+          >
+            <button className="waves-effect waves-light btn green">Pay Now</button>
+          </StripeCheckout>
+        </div>
+        {/* <div className="payment-btn">
+          <button
+            className="waves-effect waves-light btn green"
+            style={{ marginTop: '10px' }}
+            onClick={handlePayuPayment}
+          >PayU
         </button>
-      </div>
+        </div> */}
 
-    </div>
+      </div>
+      <PaymentModal
+        show={show}
+        handleClose={handleClose}
+        handleShow={handleShow}
+      />
+    </>
   )
 }
