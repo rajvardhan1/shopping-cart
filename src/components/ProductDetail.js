@@ -3,7 +3,7 @@ import './styles/productDetaileStyle.css';
 
 export default function ProductDetail() {
   return (
-    <main className="container">
+    <main className="container details-container">
 
       <div className="left-column">
         <img src="https://i.ytimg.com/vi/YetO6_gRoCw/hqdefault.jpg" alt="" />
