@@ -6,14 +6,16 @@ import CartContext from './contexts/cartContext';
 import Checkout from './components/Checkout';
 import { Home } from './components/Home';
 import ProductDetail from './components/ProductDetail';
+import LogIn from './components/LogIn';
 
 function App() {
   return (
     <BrowserRouter>
       <CartContext>
         <div className="App">
-          <NavBar />
           <switch>
+            <Route exact path="/login" component={LogIn} />
+            <NavBar />
             <Route exact path="/" component={ProductList} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/checkout" component={Checkout} />
