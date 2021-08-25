@@ -8,7 +8,7 @@ export const Home = () => {
             <div class="swiper-wrapper" style={{msTransitionDuration: '0ms'}}>
               <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" style={{width: '1838px', transform: 'translate3d(0px, 0px, 0px)', opacity: '1', transitionDuration: "0ms"}}>
                 <a href="/collections/lifestyle-collection">
-                  <img src="https://cdn.shopify.com/s/files/1/1774/5405/t/2/assets/slide2_image.jpg?v=8343108823645162859" alt="" height='650px' width='1838px'/>
+                  <img src="https://cdn.shopify.com/s/files/1/1774/5405/t/2/assets/slide2_image.jpg?v=8343108823645162859" alt="" height='650px' width='1838px' style={{marginTop:'-3px'}}/>
                   
                     <div class="slider_caption container">
                       <div class="textblock1">

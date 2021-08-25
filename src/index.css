@@ -109,23 +109,25 @@ nav-wrapper {
   overflow-y: hidden;
 }
 .pd-card{
-  height: 810px;
-  margin: 80px 20px 0px 25px;
-  border-radius: 48px;
+  height: fit-content;
+  float: left;
+  top: 94px;
+  /* border-radius: 48px; */
+  left: 25px;
 }
 .pd-container{
   margin-right: 194px !important;
-  margin-top: -892px;
 }
 .pd-header{
   font-size: 20px;
-  padding: 42px 0px 10px 47px;
+  padding: 42px 0px 10px 25px;
   border-bottom: 1px solid #E6EAFF;
 }
 .pd-accordian{
    width: 250px;
    margin-left: 25px;
    margin-top: 15px;
+   padding-bottom: 41px;
 }
 .accordian-main{
   margin-top: 15px;
@@ -147,6 +149,30 @@ nav-wrapper {
 }
 .now-wrap{
   white-space: nowrap;
+}
+._3879cV{
+  vertical-align: middle;
+  font-size: 14px;
+  padding-left: var(--checkbox-label-margin-left);
+  color: var(--color-grey-grade5);
+  display: inline-block;
+  width: calc(100% - var(--checkbox-side) - var(--checkbox-label-margin-left));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1;
+  cursor: pointer;
+}
+._27Q4lz {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 100px;
+  vertical-align: bottom;
+  border: 1px solid rgba(0,0,0,.1);
+}
+._33QaMY{
+  margin-left: 7px;
 }
 /* .payment-btn{
   display: inline-grid;
