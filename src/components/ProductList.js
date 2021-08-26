@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Form from 'react-bootstrap/Form'
 import {Checkbox, FormControlLabel} from '@material-ui/core';
+import StarIcon from '@material-ui/icons/Star';
 
 export default function ProductList() {
   const [checked, setChecked] = React.useState(false);
@@ -20,9 +21,9 @@ export default function ProductList() {
 
   return (
     <>
-      <Card className="pd-card">
-        <Card.Header className="pd-header">Filter</Card.Header>
-        <div className="pd-accordian">
+      <Card className="container pd-card">
+        <Card.Header className="pd-header">Filters</Card.Header>
+        <div className="container pd-accordian">
           <span>CATEGORIES</span>
         <Accordion className="accordian-main">
         <AccordionSummary
@@ -63,12 +64,26 @@ export default function ProductList() {
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography ><b>CUSTOMER RATINGS</b></Typography>
+          <Typography className="now-wrap"><b>CUSTOMER RATINGS</b></Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
+            <FormControlLabel
+              control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
+              label="4★ & above" className="now-wrap"
+            />
+             <FormControlLabel
+              control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
+              label="3★ & above" className="now-wrap"
+            />
+             <FormControlLabel
+              control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
+              label="2★ & above" className="now-wrap"
+            />
+             <FormControlLabel
+              control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
+              label="1★ & above" className="now-wrap"
+            />
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -148,7 +163,72 @@ export default function ProductList() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-                
+            <div className="now-wrap">
+              <FormControlLabel
+                  control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
+                  className="now-wrap" style={{marginRight:"2px"}}
+              /> 
+              <div class="_3879cV">
+                <div>
+                  <div class="_27Q4lz" style={{background: "rgb(245, 245, 220)", marginLeft:'1px'}}></div>
+                  <div class="_33QaMY _3879cV">Beige</div>
+                </div>
+              </div>
+            </div>
+            <FormControlLabel
+                control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
+                className="now-wrap"
+            />
+            <div class="_3879cV">
+              <div>
+                <div class="_27Q4lz" style={{background: "rgb(41, 36, 33)", marginLeft:'1px'}}></div>
+                <div class="_33QaMY _3879cV">Black</div>
+              </div>
+            </div>
+            <FormControlLabel
+                control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
+                className="now-wrap"
+            />
+             <div class="_3879cV">
+              <div>
+                <div class="_27Q4lz" style={{background: "rgb(51, 161, 222)", marginLeft:'1px'}}></div>
+                <div class="_33QaMY _3879cV">Blue</div>
+              </div>
+            </div>
+            <div className="now-wrap">
+              <FormControlLabel
+                  control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
+                  className="now-wrap"
+              />
+              <div class="_3879cV">
+                <div>
+                  <div class="_27Q4lz" style={{background: "rgb(140, 120, 83)", marginLeft:'1px'}}></div>
+                  <div class="_33QaMY _3879cV">Bronze</div>
+                </div>
+              </div>
+            </div>
+              <FormControlLabel
+              control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
+               className="now-wrap"
+            />  
+             <div class="_3879cV">
+              <div>
+                <div class="_27Q4lz" style={{background: "rgb(92, 51, 23)", marginLeft:'1px'}}></div>
+                <div class="_33QaMY _3879cV">Brown</div>
+              </div>
+            </div> 
+            <div className="now-wrap">
+              <FormControlLabel
+                control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
+                className="now-wrap"
+              />  
+              <div class="_3879cV">
+                <div>
+                  <div class="_27Q4lz" style={{background: "rgb(144, 0, 32)", marginLeft:'1px'}}></div>
+                  <div class="_33QaMY _3879cV">Burgundy</div>
+                </div>
+              </div> 
+            </div>   
           </Typography>
         </AccordionDetails>
       </Accordion>
