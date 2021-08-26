@@ -7,6 +7,7 @@ import Checkout from './components/Checkout';
 import { Home } from './components/Home';
 import ProductDetail from './components/ProductDetail';
 import LogIn from './components/LogIn';
+import Contact from './components/Contact';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/checkout" component={Checkout} />
             <Route exact path="/home" component={Home} />
-            <Route excap path="/product-detail" component={ProductDetail} />
+            <Route exact path="/product-detail" component={ProductDetail} />
+            <Route exact path="/contact" component={Contact} />
           </switch>
         </div>
       </CartContext>
