@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import PaymentModal from './Dialogs/PaymentModal';
 import logo from '../assets/shoppica_logo.png'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const { location } = props;
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -19,9 +20,17 @@ const Navbar = () => {
           </div>
           <div className="col-8">
             <ul className="right">
+              {
+                 location.pathname == '/login'
+                 ?
+                 ''
+                 :
+                 <>
               <li><Link to="/home">Home</Link></li>
               <li><Link to="/">Shop</Link></li>
               <li><Link to="/cart" style={{margin:"6px"}}><i className="material-icons">shopping_cart</i></Link></li>
+              </>
+             }
               {/* <li> Pay
                   <ul class="dropdown">
                   <li onClick={handleShow}>Stripe Payment</li>
@@ -30,7 +39,7 @@ const Navbar = () => {
               </li> */}
             </ul>
           </div>
-        </div>
+        </div>  
       </nav>
       <PaymentModal
         show={show}
@@ -42,4 +51,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar;
+export default withRouter(Navbar);
