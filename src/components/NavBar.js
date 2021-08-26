@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import PaymentModal from './Dialogs/PaymentModal';
+import logo from '../assets/shoppica_logo.png'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -13,7 +15,7 @@ const Navbar = () => {
       <nav className="nav-wrapper blue accent-1">
         <div className="container">
           <div className="col-4">
-            <Link to="/" className="brand-logo">Shopping</Link>
+            <Link to="/" className="brand-logo">Shopping <ShoppingCartIcon  className="cartIcon"/></Link>
           </div>
           <div className="col-8">
             <ul className="right">
