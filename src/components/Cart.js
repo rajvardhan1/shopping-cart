@@ -33,7 +33,10 @@ export default function Cart() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  
+  const handleOrder =()=>{
+    window.location.href="/cart-detail"
+  }
   const handlePayment = (token) => {
 
     let total = 0;
@@ -170,14 +173,7 @@ export default function Cart() {
             }
           </ul>
           <Card.Footer>
-            <StripeCheckout
-              stripeKey={"pk_test_51JNbPvSB8bOa6XsJ6HMHPyDH7QEtbLFsDMYl6oAdMWvQt1pzIoueqGACWa2KddNUOrJMTzx7qnys0bTdHmDyx80f00kPn1Ej6L"}
-              token={handlePayment}
-              name="Stripe Payment"
-              amount={total * 100}
-            >
-              <button className="waves-effect waves-light btn green pay-btn">Pay Now</button>
-            </StripeCheckout>
+              <button className="waves-effect waves-light btn  placeOrder-btn" onClick={handleOrder}>PLACE ORDER</button>
           </Card.Footer>
         </Card>
         <Card className="cart cart-details">

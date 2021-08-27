@@ -8,6 +8,7 @@ import { Home } from './components/Home';
 import ProductDetail from './components/ProductDetail';
 import LogIn from './components/LogIn';
 import Contact from './components/Contact';
+import CartNext from './components/CartNext';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route exact path="/home" component={Home} />
             <Route exact path="/product-detail" component={ProductDetail} />
             <Route exact path="/contact" component={Contact} />
+            <Route exact path="/cart-detail" component={CartNext} />
           </switch>
         </div>
       </CartContext>

@@ -21,6 +21,7 @@ body{
   height: 600px !important;
   overflow-y: scroll !important;
   padding-right: 0px !important;
+  background-color: #f1f3f6;
 }
 .card {
   width: 300px;
@@ -43,11 +44,22 @@ body{
   height: fit-content;
 }
 .pay-btn{
-    top: 15px;
-    float: right;
-    right: 25px;
+  top: -9px;
+  float: left;
+  left: 58px;
 }
-
+.placeOrder-btn{
+  width: 251px;
+  top: 15px;
+  float: right;
+  right: 25px;
+  background: #fb641b;
+  height: 56px;
+  font-size: 16px;
+}
+.placeOrder-btn:hover{
+  background: #fb641b;
+}
 .collection .collection-product {
   display: flex;
   border-top: 1px solid #f0f0f0!important;
@@ -219,6 +231,43 @@ nav-wrapper {
 .cart-details > h6
 {
   color: #878787 !important;
+}
+.next{
+  width: 750px;
+  left: 40px !important;
+  margin-top: 20px;
+}
+.mt{
+  margin-top: 45px !important;
+}
+.next-display > h5{
+  color: #878787 !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  margin-bottom: 6px;
+}
+.next-display{
+  display: flex;
+}
+.check{
+  font-size: 20px !important;
+  color: blue;
+  margin: -2px ;
+}
+.count{
+  font-size: 12px;
+  color: #2874f0;
+  background-color: #f0f0f0;
+  border-radius: 2px;
+  padding: 3px 7px;
+  vertical-align: baseline;
+  margin-right: 17px;
+  margin: 18px;
+}
+.name{
+  color: #212121;
+  font-weight: 500;
+  margin-left: 55px;
 }
 /* .payment-btn{
   display: inline-grid;
