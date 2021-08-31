@@ -26,12 +26,16 @@ export default function Cart() {
   ]
 
   const [total, setTotal] = useState(0)
-  const { cart } = useContext(Context)
+  const { cart, removeFromCart } = useContext(Context)
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleRemove = (id) => {
+    removeFromCart(id);
+  }
 
   const handlePayment = (token) => {
 
@@ -42,6 +46,8 @@ export default function Cart() {
 
 
     setTotal(total)
+
+    console.log(token, 'token');
 
     const body = {
       token,
@@ -156,10 +162,13 @@ export default function Cart() {
                         <b>Quantity: {product.quantity}</b>
                       </p>
                       <div className="add-remove">
-                        <Link to="/cart"><i className="material-icons">arrow_drop_up</i></Link>
-                        <Link to="/cart"><i className="material-icons">arrow_drop_down</i></Link>
+                        {/* <Link to="/cart"><i className="material-icons">arrow_drop_up</i></Link>
+                        <Link to="/cart"><i className="material-icons">arrow_drop_down</i></Link> */}
                       </div>
-                      <button className="waves-effect waves-light btn pink remove">Remove</button>
+                      <button
+                        className="waves-effect waves-light btn pink remove"
+                        onClick={() => handleRemove(product.id)}
+                      >Remove</button>
                     </div>
 
                   </li>
@@ -170,7 +179,7 @@ export default function Cart() {
         </div>
         <div>
           <StripeCheckout
-            stripeKey={"pk_test_51JNbPvSB8bOa6XsJ6HMHPyDH7QEtbLFsDMYl6oAdMWvQt1pzIoueqGACWa2KddNUOrJMTzx7qnys0bTdHmDyx80f00kPn1Ej6L"}
+            stripeKey={"pk_test_51JNbPvSB8bOa6XsJZGwbvc9wxjbMPSLxBwpb61XSKmZRB9vifvsyDElwYE9D1r1RlfMF00Uz5LAdlm2pc7cOYE7W009vNiN8Qs"}
             token={handlePayment}
             name="Stripe Payment"
             amount={total * 100}

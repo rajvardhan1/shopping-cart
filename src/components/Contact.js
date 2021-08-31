@@ -22,6 +22,26 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const data = {
+      to: 'rajthakur3619@gmail.com',
+      body: contactDetail.message,
+      subject: 'Test mail'
+    }
+
+    fetch('http://localhost:8000/sendgrid-mail', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response) => response.json())
+      .then(response => {
+        console.log(response)
+        alert('Mail sent successfully')
+      })
+
     console.log('handle submit')
   }
 
