@@ -31,7 +31,7 @@ export default function ProductList() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography className="typogaphy" ><b>BRAND</b></Typography>
+          <Typography className="typogaphy" >BRAND</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -64,7 +64,7 @@ export default function ProductList() {
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography className="now-wrap"><b>CUSTOMER RATINGS</b></Typography>
+          <Typography className="now-wrap">CUSTOMER RATINGS</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -93,7 +93,7 @@ export default function ProductList() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography ><b>SORT BY </b></Typography>
+          <Typography >SORT BY </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -118,7 +118,7 @@ export default function ProductList() {
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography ><b>DISCOUNT</b></Typography>
+          <Typography >DISCOUNT</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -159,14 +159,14 @@ export default function ProductList() {
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography><b>COLOR</b></Typography>
+          <Typography>COLOR</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
             <div className="now-wrap">
               <FormControlLabel
                   control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
-                  className="now-wrap" style={{marginRight:"2px"}}
+                  className="now-wrap mr-2"
               /> 
               <div class="_3879cV">
                 <div>
@@ -177,7 +177,7 @@ export default function ProductList() {
             </div>
             <FormControlLabel
                 control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
-                className="now-wrap"
+                className="now-wrap mr-2"
             />
             <div class="_3879cV">
               <div>
@@ -187,7 +187,7 @@ export default function ProductList() {
             </div>
             <FormControlLabel
                 control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
-                className="now-wrap"
+                className="now-wrap mr-2"
             />
              <div class="_3879cV">
               <div>
@@ -198,7 +198,7 @@ export default function ProductList() {
             <div className="now-wrap">
               <FormControlLabel
                   control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
-                  className="now-wrap"
+                  className="now-wrap mr-2"
               />
               <div class="_3879cV">
                 <div>
@@ -209,7 +209,7 @@ export default function ProductList() {
             </div>
               <FormControlLabel
               control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
-               className="now-wrap"
+               className="now-wrap mr-2"
             />  
              <div class="_3879cV">
               <div>
@@ -220,7 +220,7 @@ export default function ProductList() {
             <div className="now-wrap">
               <FormControlLabel
                 control={<Checkbox checked={checked} onChange={handleChange} name="checkedA" />}
-                className="now-wrap"
+                className="now-wrap mr-2"
               />  
               <div class="_3879cV">
                 <div>
@@ -238,7 +238,7 @@ export default function ProductList() {
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography><b>OFFERS</b></Typography>
+          <Typography>OFFERS</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -263,7 +263,7 @@ export default function ProductList() {
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography><b>AVAILABILITY</b></Typography>
+          <Typography>AVAILABILITY</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>

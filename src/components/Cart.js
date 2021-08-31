@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
 import { Context } from './../contexts/cartContext'
 import PaymentModal from './Dialogs/PaymentModal';
+import Card from 'react-bootstrap/Card';
 
 export default function Cart() {
-
+  const [quantity, setQuantity] = useState(null)
   const products = [
     {
       "id": 3,
@@ -141,12 +142,13 @@ export default function Cart() {
 
   return (
     <>
-      <div className="container">
-        <div className="cart">
-          <h5>Your Cart :</h5>
+      <div className="container cart-container">
+        <Card className="cart">
+          <h5>My Cart </h5>
           <ul className="collection">
+            {console.log('cart', cart)}
             {
-              cart.map((product, index) => {
+              products.map((product, index) => {
                 return (
                   <li className="collection-product avatar" key={product.id}>
                     <div className="product-img">
@@ -155,8 +157,8 @@ export default function Cart() {
 
                     <div className="product-desc">
                       <span className="title">{product.title}</span>
-                      <p>{product.desc}</p>
-                      <p><b>Price: {product.price}$</b></p>
+                      <span>{product.desc}</span>
+                      <span><b>Price: {product.price}$</b></span>
                       <p>
                         {console.log('product', product.price)}
                         <b>Quantity: {product.quantity}</b>
@@ -176,17 +178,21 @@ export default function Cart() {
               })
             }
           </ul>
-        </div>
-        <div>
-          <StripeCheckout
-            stripeKey={"pk_test_51JNbPvSB8bOa6XsJZGwbvc9wxjbMPSLxBwpb61XSKmZRB9vifvsyDElwYE9D1r1RlfMF00Uz5LAdlm2pc7cOYE7W009vNiN8Qs"}
-            token={handlePayment}
-            name="Stripe Payment"
-            amount={total * 100}
-          >
-            <button className="waves-effect waves-light btn green">Pay Now</button>
-          </StripeCheckout>
-        </div>
+          <Card.Footer>
+            <button className="waves-effect waves-light btn  placeOrder-btn" onClick={handleOrder}>PLACE ORDER</button>
+          </Card.Footer>
+        </Card>
+        <Card className="cart cart-details">
+          <h6>PRICE DETAILS</h6><br />
+          <div className="box price-details">
+            <span>Price(2 items)</span>
+            <span>1</span>
+          </div>
+          <div className="box price-details">
+            <span><b>Total</b></span>
+            <span><b>$67</b></span>
+          </div>
+        </Card>
         {/* <div className="payment-btn">
           <button
             className="waves-effect waves-light btn green"

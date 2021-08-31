@@ -67,7 +67,7 @@ export default function Checkout(){
   }
    
   return (
-    <div className="conatiner">
+    <div className="container">
       <form className="checkout-form" onSubmit={handleSubmit}>
         <span className="checkout-text">Shipping Address</span>
         <div className="box" style={{marginTop: '15px'}}>

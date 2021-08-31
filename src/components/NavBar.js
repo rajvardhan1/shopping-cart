@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import PaymentModal from './Dialogs/PaymentModal';
+import logo from '../assets/shoppica_logo.png'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const Navbar = (props) => {
   const { location } = props;
