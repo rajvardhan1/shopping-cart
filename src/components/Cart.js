@@ -5,31 +5,43 @@ import { Context } from './../contexts/cartContext'
 import PaymentModal from './Dialogs/PaymentModal';
 import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel'
-import home1 from '../assets/home1.jpg'
+import shoes1 from '../assets/shoes1.jpg'
 
 export default function Cart() {
   const [quantity, setQuantity] = useState(null)
   const products = [
     {
-      "id": 3,
-      "title": "Vans",
-      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
-      "price": 500,
-      "img": "https://cdn.shopify.com/s/files/1/0236/3431/3280/files/a02_370x230@2x.jpg?v=1603564161",
+      "id": 1,
+      "title": "Adidas",
+      "desc": "Lorem Adidas",
+      "price": 400,
+      "img": "//cdn.shopify.com/s/files/1/0024/1726/2691/products/adidas_running_alphabounce_beyond_1_370x370_crop_top.jpg?v=1553849230",
       "quantity": 1
     },
     {
-      "id": 4,
-      "title": "White",
+      "id":2 ,
+      "title": "NIKE",
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
-      "price": 55,
-      "img": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_450,h_450/global/380353/01/sv01/fnd/IND/fmt/png",
+      "price": 500,
+      "img": "//cdn.shopify.com/s/files/1/0024/1726/2691/products/clarks_desert_boot_1_370x370_crop_top.jpg?v=1553849295",
+      "quantity": 3
+    },
+    {
+      "id":3 ,
+      "title": "New Balance",
+      "desc": "Balance onsectetur adipisicing elit. Minima, ex.",
+      "price": 1500,
+      "img": "//cdn.shopify.com/s/files/1/0024/1726/2691/products/converse_chuck_taylor_all_star_leather_hi_1_370x370_crop_top.jpg?v=1553849322",
       "quantity": 3
     }
   ]
+  
+  const handleAddToCart = (product) => {
+    cartIds.indexOf(product.id) == -1 ? addToCart(product) : removeFromCart(product.id);
+  }
 
   const [total, setTotal] = useState(0)
-  const { cart, removeFromCart } = useContext(Context)
+  const { cart,addToCart,cartIds, removeFromCart } = useContext(Context)
 
   const [show, setShow] = useState(false);
 
@@ -209,18 +221,54 @@ export default function Cart() {
         </ol>
 
         <div class="carousel-inner">
-          <div class="item active" style={{display:'flex'}}>
-            <img src="//cdn.shopify.com/s/files/1/0024/1726/2691/products/adidas_running_alphabounce_beyond_1_370x370_crop_top.jpg?v=1553849230" alt="Los Angeles"/>
-            <img src="//cdn.shopify.com/s/files/1/0024/1726/2691/products/clarks_desert_boot_1_370x370_crop_top.jpg?v=1553849295" alt="Chicago"/>
-            <img src="//cdn.shopify.com/s/files/1/0024/1726/2691/products/converse_chuck_taylor_all_star_leather_hi_1_370x370_crop_top.jpg?v=1553849322" alt="New York"/>
+            <div class="item active" >
+              <img src={products[0].img} alt="Los Angeles"/>
+              <div className="move-to-cart" onClick={()=>{handleAddToCart(products[0])}}>MOVE TO CART</div>
+              <div className="mr-803">
+                <div className="product_info">
+                    <p class="product_name">
+                      <a href="/products/adidas_running_alphabounce_beyond">{products[0].title}</a>
+                    </p>
+                </div>
+                <div className="product_prop">
+                  <p class="product_price">
+                    <span class="money" data-currency-usd="$19.00">{products[0].price}</span>
+                  </p>
+                </div>
+              </div>
           </div>
+          <div class="item">
+            <img src={products[1].img} alt="Chicago"/>
+            <div className="move-to-cart" onClick={()=>{handleAddToCart(products[1])}}>MOVE TO CART</div>
+            <div className="mr-803">
+              <div className="product_info">
+                    <p class="product_name">
+                      <a href="/products/adidas_running_alphabounce_beyond">{products[1].title}</a>
+                    </p>
+                </div>
+                <div className="product_prop">
+                  <p class="product_price">
+                    <span class="money" data-currency-usd="$19.00">{products[1].price}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
 
           <div class="item">
-            <img src="//cdn.shopify.com/s/files/1/0024/1726/2691/products/clarks_desert_boot_1_370x370_crop_top.jpg?v=1553849295" alt="Chicago"/>
-          </div>
-
-          <div class="item">
-            <img src="//cdn.shopify.com/s/files/1/0024/1726/2691/products/converse_chuck_taylor_all_star_leather_hi_1_370x370_crop_top.jpg?v=1553849322" alt="New York"/>
+            <img src={products[2].img} alt="New York"/>
+            <div className="move-to-cart" onClick={()=>{handleAddToCart(products[2])}}>MOVE TO CART</div>
+            <div className="mr-803">
+              <div className="product_info">
+                    <p class="product_name">
+                      <a href="/products/adidas_running_alphabounce_beyond">{products[2].title}</a>
+                    </p>
+                </div>
+                <div className="product_prop">
+                  <p class="product_price">
+                    <span class="money" data-currency-usd="$19.00">{products[2].price}</span>
+                  </p>
+                </div>
+            </div>
           </div>
         </div>
 

@@ -322,11 +322,18 @@ nav-wrapper {
   position: relative;
   width: 100%;
   overflow: hidden;
-  left: 395px;
+  left: 450px;
 }
 
+.item img{
+  border: 1px solid #f0f0f0!important;
+}
 .carousel {
   top: 45px;
+  background-color: white;
+  left: 317px;
+  width: 66%;
+  height: fit-content;
 }
 .carousel-control.left {
   background-image: none !important;
@@ -345,6 +352,30 @@ nav-wrapper {
   background-image: none !important;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
   background-repeat: repeat-x;
+}
+.carouselCard{
+  width: fit-content;
+  height: 400px;
+  padding-bottom: 30px;
+}
+.move-to-cart{
+  position: absolute;
+  left: 226px;
+  top: 11px;
+  display: inline-block;
+  text-transform: uppercase;
+  box-shadow: none;
+  outline: 0;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.productTitle{
+  margin-left: 150px !important;
+  float: left !important;
+}
+.mr-803{
+  margin-right: 803px;
 }
 /* .payment-btn{
   display: inline-grid;
