@@ -4,6 +4,8 @@ import StripeCheckout from 'react-stripe-checkout';
 import { Context } from './../contexts/cartContext'
 import PaymentModal from './Dialogs/PaymentModal';
 import Card from 'react-bootstrap/Card';
+import Carousel from 'react-bootstrap/Carousel'
+import home1 from '../assets/home1.jpg'
 
 export default function Cart() {
   const [quantity, setQuantity] = useState(null)
@@ -152,7 +154,7 @@ export default function Cart() {
           <ul className="collection">
             {console.log('cart', cart)}
             {
-              products.map((product, index) => {
+              cart.map((product, index) => {
                 return (
                   <li className="collection-product avatar" key={product.id}>
                     <div className="product-img">
@@ -197,16 +199,41 @@ export default function Cart() {
             <span><b>$67</b></span>
           </div>
         </Card>
-        {/* <div className="payment-btn">
-          <button
-            className="waves-effect waves-light btn green"
-            style={{ marginTop: '10px' }}
-            onClick={handlePayuPayment}
-          >PayU
-        </button>
-        </div> */}
-
       </div>
+      <>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <div class="carousel-inner">
+          <div class="item active" style={{display:'flex'}}>
+            <img src="//cdn.shopify.com/s/files/1/0024/1726/2691/products/adidas_running_alphabounce_beyond_1_370x370_crop_top.jpg?v=1553849230" alt="Los Angeles"/>
+            <img src="//cdn.shopify.com/s/files/1/0024/1726/2691/products/clarks_desert_boot_1_370x370_crop_top.jpg?v=1553849295" alt="Chicago"/>
+            <img src="//cdn.shopify.com/s/files/1/0024/1726/2691/products/converse_chuck_taylor_all_star_leather_hi_1_370x370_crop_top.jpg?v=1553849322" alt="New York"/>
+          </div>
+
+          <div class="item">
+            <img src="//cdn.shopify.com/s/files/1/0024/1726/2691/products/clarks_desert_boot_1_370x370_crop_top.jpg?v=1553849295" alt="Chicago"/>
+          </div>
+
+          <div class="item">
+            <img src="//cdn.shopify.com/s/files/1/0024/1726/2691/products/converse_chuck_taylor_all_star_leather_hi_1_370x370_crop_top.jpg?v=1553849322" alt="New York"/>
+          </div>
+        </div>
+
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      </>
       <PaymentModal
         show={show}
         handleClose={handleClose}

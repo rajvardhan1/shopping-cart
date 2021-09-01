@@ -1,20 +1,9 @@
-import React, { useState } from "react";
-import {
-  Typography,
-  TextField,
-  Button,
-  Stepper,
-  Step,
-  StepLabel,
-} from "@material-ui/core";
+import React, { useState, useContext } from "react";
+import { Typography,TextField,Button,Stepper,Step,StepLabel} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  useForm,
-  Controller,
-  FormProvider,
-  useFormContext,
-} from "react-hook-form";
+import { useForm,Controller,FormProvider,useFormContext} from "react-hook-form";
 import './styles/linearStepperStyle.css'
+import { Context } from './../contexts/cartContext'
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -308,10 +297,11 @@ const LinaerStepper = () => {
   const [skippedSteps, setSkippedSteps] = useState([]);
   const steps = getSteps();
   const [total, setTotal] = useState(0)
+  const { cart } = useContext(Context)
 
   const handleNext = (data) => {
     let total = 0;
-    products.map((item, ind) => {
+    cart.map((item, ind) => {
       total += item.price
     })
     setTotal(total)
@@ -320,12 +310,10 @@ const LinaerStepper = () => {
       total,
       ...data
     }
-    console.log('body', data);
     const headers = {
       "Content-Type": "application/json"
     }
     if (activeStep == steps.length - 1) {
-      console.log('body......', body);
       return fetch(`http://localhost:8000/stripe-payment`, {
         method: "POST",
         headers,

@@ -27,7 +27,7 @@ export default function CartNext() {
       "quantity": 3
     }
   ]
-  
+
   return(
     <div className="container">
         {/* <Card className="cart next mt">
@@ -48,7 +48,6 @@ export default function CartNext() {
         </Card> */}
         <Card className="cart next">
           <div className="next-display">
-            <span className="count">3</span> 
             <h5>ORDER SUMMARY <CheckIcon className="check"/></h5>
           </div>  
           <>

@@ -247,7 +247,7 @@ nav-wrapper {
   color: #878787 !important;
   font-size: 16px !important;
   font-weight: 500 !important;
-  margin-bottom: 6px;
+  margin: 15px;
 }
 .next-display{
   display: flex;
@@ -318,6 +318,34 @@ nav-wrapper {
   display: block! important;
 }
 
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  left: 395px;
+}
+
+.carousel {
+  top: 45px;
+}
+.carousel-control.left {
+  background-image: none !important;
+  background-image: none !important;
+  background-image: none !important;
+  background-image: none !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+  background-repeat: repeat-x;
+}
+.carousel-control.right {
+  right: 0;
+  left: auto;
+  background-image: none !important;
+  background-image: none !important;
+  background-image: none !important;
+  background-image: none !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+  background-repeat: repeat-x;
+}
 /* .payment-btn{
   display: inline-grid;
 }
