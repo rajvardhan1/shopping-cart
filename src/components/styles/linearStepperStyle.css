@@ -1,0 +1,27 @@
+.linearMain{
+    background-color: white !important;
+    margin-top: 120px;
+    padding: 45px;
+}
+.MuiInputBase-input{
+   border-bottom: none !important;
+}
+.basicForm{
+    width: 65%;
+    margin-left: 195px;
+    box-shadow: 2px 2px 29px gainsboro;
+    padding: 23px 102px 44px 102px;
+}
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea{
+    box-shadow: none !important;
+}
+.MuiStepIcon-root.MuiStepIcon-active {
+    color: #0060ff !important;
+}
+.MuiStepIcon-root.MuiStepIcon-completed {
+    color: #0060ff !important;
+}
+.MuiButton-containedPrimary {
+    color: black !important;
+    background-color: #82B1FF !important;
+}

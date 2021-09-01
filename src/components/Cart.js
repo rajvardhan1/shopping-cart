@@ -38,6 +38,10 @@ export default function Cart() {
     removeFromCart(id);
   }
 
+  const handleOrder = () => {
+    window.location.href = "/checkout"
+  } 
+
   const handlePayment = (token) => {
 
     let total = 0;
@@ -148,7 +152,7 @@ export default function Cart() {
           <ul className="collection">
             {console.log('cart', cart)}
             {
-              products.map((product, index) => {
+              cart.map((product, index) => {
                 return (
                   <li className="collection-product avatar" key={product.id}>
                     <div className="product-img">

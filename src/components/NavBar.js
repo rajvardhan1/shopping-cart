@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import PaymentModal from './Dialogs/PaymentModal';
@@ -8,8 +9,13 @@ const Navbar = (props) => {
   const { location } = props;
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleCart = () => {
+    window.location.href = "/cart"
+  }
+
+  const handleOrder = () => {
+    window.location.href="/c"
+  }
 
   return (
     <>
@@ -17,7 +23,7 @@ const Navbar = (props) => {
         <div className="container menu-area">
           <Link to="/" className="brand-logo">Shopping</Link>
 
-          <ul className="right">
+          <ul className="right right-menu">
             {
               location.pathname == '/login'
                 ?
@@ -27,7 +33,12 @@ const Navbar = (props) => {
                   <li><Link to="/home">Home</Link></li>
                   <li><Link to="/">Shop</Link></li>
                   <li><Link to="/contact">Contact Us</Link></li>
-                  <li><Link to="/cart"><i className="material-icons">shopping_cart</i></Link></li>
+                  <li className="menu-button"><Link to="/cart"><i className="material-icons">shopping_cart</i></Link>
+                    <ul class="dropdown-menu">
+                      <li onClick={handleCart}>My Cart </li><br/>
+                      <li onClick={handleOrder}>My Orders </li>
+                    </ul>
+                  </li>
                 </>
             }
             {/* <li> Pay
@@ -39,11 +50,11 @@ const Navbar = (props) => {
           </ul>
         </div>
       </nav>
-      <PaymentModal
+      {/* <PaymentModal
         show={show}
         handleClose={handleClose}
         handleShow={handleShow}
-      />
+      /> */}
 
     </>
   )
