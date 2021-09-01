@@ -84,7 +84,7 @@ const BasicForm = () => {
         )}
       />
 
-     <Controller
+      <Controller
         control={control}
         name="email"
         render={({ field }) => (
@@ -184,7 +184,7 @@ const AddressForm = () => {
           />
         )}
       />
-      
+
       <Controller
         control={control}
         name="country"
@@ -294,14 +294,14 @@ const LinaerStepper = () => {
       emailAddress: "",
       phoneNumber: "",
       address1: "",
-      postalCode:"",
-      city:"",
-      state:"",
+      postalCode: "",
+      city: "",
+      state: "",
       country: "",
       cardNumber: "",
       expMonth: "",
       expYear: "",
-      cvv:''
+      cvv: ''
     },
   });
   const [activeStep, setActiveStep] = useState(0);
@@ -318,14 +318,14 @@ const LinaerStepper = () => {
     const body = {
       products: products,
       total,
-      data
+      ...data
     }
-    console.log('body',data);
+    console.log('body', data);
     const headers = {
       "Content-Type": "application/json"
     }
     if (activeStep == steps.length - 1) {
-      console.log('body......',body);
+      console.log('body......', body);
       return fetch(`http://localhost:8000/stripe-payment`, {
         method: "POST",
         headers,
@@ -334,11 +334,11 @@ const LinaerStepper = () => {
         setActiveStep(activeStep + 1);
         console.log(response, ' Response');
       })
-      .catch((err) => console.log(err))
+        .catch((err) => console.log(err))
     }
     else {
-        setActiveStep(activeStep + 1);
-      }
+      setActiveStep(activeStep + 1);
+    }
   };
 
   const handleBack = () => {
@@ -365,10 +365,10 @@ const LinaerStepper = () => {
           Thank You
         </Typography>
       ) : (
-        <>
-          <FormProvider {...methods}>
-            <form onSubmit={methods.handleSubmit(handleNext)} className="basicForm">
-              {getStepContent(activeStep)}
+          <>
+            <FormProvider {...methods}>
+              <form onSubmit={methods.handleSubmit(handleNext)} className="basicForm">
+                {getStepContent(activeStep)}
                 <div className="mt-2">
                   <Button
                     className={classes.button}
@@ -388,10 +388,10 @@ const LinaerStepper = () => {
                     {activeStep === steps.length - 1 ? "Finish" : "Next"}
                   </Button>
                 </div>
-            </form>
-          </FormProvider>
-        </>
-      )}
+              </form>
+            </FormProvider>
+          </>
+        )}
     </div>
   );
 };
