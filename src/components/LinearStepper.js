@@ -22,6 +22,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const products = [
+  {
+    "id": 3,
+    "title": "Vans",
+    "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
+    "price": 500,
+    "img": "https://cdn.shopify.com/s/files/1/0236/3431/3280/files/a02_370x230@2x.jpg?v=1603564161",
+    "quantity": 1
+  },
+  {
+    "id": 4,
+    "title": "White",
+    "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
+    "price": 55,
+    "img": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_450,h_450/global/380353/01/sv01/fnd/IND/fmt/png",
+    "quantity": 3
+  }
+]
+
 function getSteps() {
   return [
     "Basic information",
@@ -67,7 +86,7 @@ const BasicForm = () => {
 
      <Controller
         control={control}
-        name="emailAddress"
+        name="email"
         render={({ field }) => (
           <TextField
             id="email"
@@ -106,7 +125,7 @@ const AddressForm = () => {
     <>
       <Controller
         control={control}
-        name="address1"
+        name="addressLine1"
         render={({ field }) => (
           <TextField
             id="address1"
@@ -235,7 +254,7 @@ const PaymentForm = () => {
       />
       <Controller
         control={control}
-        name="cardYear"
+        name="expYear"
         render={({ field }) => (
           <TextField
             id="cardYear"
@@ -274,40 +293,58 @@ const LinaerStepper = () => {
       lastName: "",
       emailAddress: "",
       phoneNumber: "",
-      alternatePhone: "",
       address1: "",
-      address2: "",
+      postalCode:"",
+      city:"",
+      state:"",
       country: "",
       cardNumber: "",
-      cardMonth: "",
-      cardYear: "",
+      expMonth: "",
+      expYear: "",
+      cvv:''
     },
   });
   const [activeStep, setActiveStep] = useState(0);
   const [skippedSteps, setSkippedSteps] = useState([]);
   const steps = getSteps();
+  const [total, setTotal] = useState(0)
 
   const handleNext = (data) => {
-    console.log(data);
-    if (activeStep == steps.length - 1) {
-      fetch("http://localhost:8000/stripe-payment")
-        .then((data) => data.json())
-        .then((res) => {
-          console.log(res);
-          setActiveStep(activeStep + 1);
-        });
-    } else {
-      setActiveStep(activeStep + 1);
+    let total = 0;
+    products.map((item, ind) => {
+      total += item.price
+    })
+    setTotal(total)
+    const body = {
+      products: products,
+      total,
+      data
     }
+    console.log('body',data);
+    const headers = {
+      "Content-Type": "application/json"
+    }
+    if (activeStep == steps.length - 1) {
+      console.log('body......',body);
+      return fetch(`http://localhost:8000/stripe-payment`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify(body)
+      }).then(response => {
+        setActiveStep(activeStep + 1);
+        console.log(response, ' Response');
+      })
+      .catch((err) => console.log(err))
+    }
+    else {
+        setActiveStep(activeStep + 1);
+      }
   };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
 
-  // const onSubmit = (data) => {
-  //   console.log(data);
-  // };
   return (
     <div className="container linearMain">
       <Stepper alternativeLabel activeStep={activeStep}>

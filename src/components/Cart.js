@@ -152,7 +152,7 @@ export default function Cart() {
           <ul className="collection">
             {console.log('cart', cart)}
             {
-              cart.map((product, index) => {
+              products.map((product, index) => {
                 return (
                   <li className="collection-product avatar" key={product.id}>
                     <div className="product-img">

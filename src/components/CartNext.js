@@ -8,7 +8,7 @@ import { Context } from './../contexts/cartContext'
 export default function CartNext() {
   const [total, setTotal] = useState(0)
   const { cart } = useContext(Context)
-
+  
   const products = [
     {
       "id": 3,
@@ -27,40 +27,10 @@ export default function CartNext() {
       "quantity": 3
     }
   ]
-
-  const handlePayment = (token) => {
-
-    let total = 0;
-    products.map((item, ind) => {
-      total += item.price
-    })
-
-
-    setTotal(total)
-
-    const body = {
-      token,
-      products: products,
-      total
-    }
-
-    const headers = {
-      "Content-Type": "application/json"
-    }
-
-    return fetch(`http://localhost:8000/stripe-payment`, {
-      method: "POST",
-      headers,
-      body: JSON.stringify(body)
-    }).then(response => {
-      console.log(response, ' Response');
-    })
-      .catch((err) => console.log(err))
-  }
-
+  
   return(
     <div className="container">
-        <Card className="cart next mt">
+        {/* <Card className="cart next mt">
           <div className="next-display">
             <span className="count">1</span>   
             <h5>LOGIN <CheckIcon className="check"/></h5>
@@ -75,7 +45,7 @@ export default function CartNext() {
           </div>  
           <span className="name">Pooja Yadav</span>
           <span style={{marginLeft:"6px"}}>2/14 xyz Indore 452001</span>
-        </Card>
+        </Card> */}
         <Card className="cart next">
           <div className="next-display">
             <span className="count">3</span> 
@@ -113,7 +83,7 @@ export default function CartNext() {
           </ul>
           </>
         </Card>
-        <Card className="cart next">
+        {/* <Card className="cart next">
           <div className="next-display">
             <span className="count">4</span> 
             <h5>PAYMENT OPTIONS <CheckIcon className="check"/></h5>
@@ -126,7 +96,7 @@ export default function CartNext() {
             >
               <button className="waves-effect waves-light btn green pay-btn">Pay Now</button>
             </StripeCheckout> 
-        </Card>
+        </Card> */}
     </div>
     )
 }

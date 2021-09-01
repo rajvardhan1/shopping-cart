@@ -14,7 +14,7 @@ const Navbar = (props) => {
   }
 
   const handleOrder = () => {
-    window.location.href="/c"
+    window.location.href="/order-details"
   }
 
   return (
@@ -23,7 +23,7 @@ const Navbar = (props) => {
         <div className="container menu-area">
           <Link to="/" className="brand-logo">Shopping</Link>
 
-          <ul className="right right-menu">
+          <ul className="right ">
             {
               location.pathname == '/login'
                 ?
@@ -33,10 +33,10 @@ const Navbar = (props) => {
                   <li><Link to="/home">Home</Link></li>
                   <li><Link to="/">Shop</Link></li>
                   <li><Link to="/contact">Contact Us</Link></li>
-                  <li className="menu-button"><Link to="/cart"><i className="material-icons">shopping_cart</i></Link>
+                  <li className="menu-button right-menu"><Link to="/cart"><i className="material-icons">shopping_cart</i></Link>
                     <ul class="dropdown-menu">
-                      <li onClick={handleCart}>My Cart </li><br/>
-                      <li onClick={handleOrder}>My Orders </li>
+                      <li className="hoverCart" onClick={handleCart}>My Cart </li>
+                      <li className="hoverCart" onClick={handleOrder}>My Orders </li>
                     </ul>
                   </li>
                 </>

@@ -10,6 +10,7 @@ import LogIn from './components/LogIn';
 import Contact from './components/Contact';
 import Profile from './components/Profile';
 import LinaerStepper from './components/LinearStepper';
+import CartNext from './components/CartNext';
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/checkout" component={LinaerStepper} />
-            
+            <Route exact path="/order-details" component={CartNext} />
           </switch>
         </div>
       </CartContext>
