@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
-import { Typography,TextField,Button,Stepper,Step,StepLabel} from "@material-ui/core";
+import { Typography, TextField, Button, Stepper, Step, StepLabel } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { useForm,Controller,FormProvider,useFormContext} from "react-hook-form";
+import { useForm, Controller, FormProvider, useFormContext } from "react-hook-form";
 import './styles/linearStepperStyle.css'
 import { Context } from './../contexts/cartContext'
 
@@ -300,14 +300,16 @@ const LinaerStepper = () => {
   const { cart } = useContext(Context)
 
   const handleNext = (data) => {
-    let total = 0;
+    let total1 = 0;
+    console.log(cart, ' cartData')
     cart.map((item, ind) => {
-      total += item.price
+      total1 += item.price
     })
-    setTotal(total)
+    setTotal(total1)
+    console.log(total1, ' total')
     const body = {
       products: products,
-      total,
+      total: total1,
       ...data
     }
     const headers = {

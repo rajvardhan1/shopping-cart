@@ -210,7 +210,7 @@ export default function Cart() {
             }
           </ul>
           <Card.Footer>
-            <button className="waves-effect waves-light btn  placeOrder-btn" onClick={handleOrder}>PLACE ORDER</button>
+            <button className="waves-effect waves-light btn  placeOrder-btn"><Link to="/checkout">PLACE ORDER</Link> </button>
           </Card.Footer>
         </Card>
         <Card className="cart cart-details">

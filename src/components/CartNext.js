@@ -2,13 +2,12 @@ import React, { useState, useContext } from 'react';
 import { Card } from 'react-bootstrap';
 import CheckIcon from '@material-ui/icons/Check';
 import { Link } from 'react-router-dom';
-import StripeCheckout from 'react-stripe-checkout';
 import { Context } from './../contexts/cartContext'
 
 export default function CartNext() {
   const [total, setTotal] = useState(0)
   const { cart } = useContext(Context)
-  
+
   const products = [
     {
       "id": 3,
@@ -28,9 +27,9 @@ export default function CartNext() {
     }
   ]
 
-  return(
+  return (
     <div className="container">
-        {/* <Card className="cart next mt">
+      {/* <Card className="cart next mt">
           <div className="next-display">
             <span className="count">1</span>   
             <h5>LOGIN <CheckIcon className="check"/></h5>
@@ -46,13 +45,13 @@ export default function CartNext() {
           <span className="name">Pooja Yadav</span>
           <span style={{marginLeft:"6px"}}>2/14 xyz Indore 452001</span>
         </Card> */}
-        <Card className="cart next">
-          <div className="next-display">
-            <h5>ORDER SUMMARY <CheckIcon className="check"/></h5>
-          </div>  
-          <>
+      <Card className="cart next">
+        <div className="next-display">
+          <h5>ORDER SUMMARY <CheckIcon className="check" /></h5>
+        </div>
+        <>
           <ul className="collection">
-            { 
+            {
               products.map((product, index) => {
                 return (
                   <li className="collection-product avatar" key={product.id}>
@@ -80,9 +79,9 @@ export default function CartNext() {
               })
             }
           </ul>
-          </>
-        </Card>
-        {/* <Card className="cart next">
+        </>
+      </Card>
+      {/* <Card className="cart next">
           <div className="next-display">
             <span className="count">4</span> 
             <h5>PAYMENT OPTIONS <CheckIcon className="check"/></h5>
@@ -97,5 +96,5 @@ export default function CartNext() {
             </StripeCheckout> 
         </Card> */}
     </div>
-    )
+  )
 }
