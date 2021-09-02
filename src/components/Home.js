@@ -20,7 +20,7 @@ export const Home = () => {
                       <div class="textblock2">
                         <h2>878 90’s Running</h2>
                         <p>This is the product of intelligent tech and simplified comfort. Its silhouette remains true to the GRID family, while an overhauled diamond quilted upper shows unrivaled versatility. Wear them proudly and wear them often.</p>
-                        <span class="btn">More Info</span>
+                        <a class="btn" href="/">More Info</a>
                       </div>
                     </div>
                 </a>
