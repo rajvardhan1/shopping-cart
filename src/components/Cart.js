@@ -233,17 +233,10 @@ export default function Cart() {
             <li data-target="#myCarousel" data-slide-to="2"></li>
           </ol>
 
-<<<<<<< Updated upstream
           <div class="carousel-inner">
             <div class="item active" >
               <img src={products[0].img} alt="Los Angeles" />
               <div className="move-to-cart" onClick={() => { handleAddToCart(products[0]) }}>{cartIds.indexOf(products[0].id) == -1 ? 'MOVE TO CART' : 'REMOVE FROM CART'} </div>
-=======
-        <div class="carousel-inner">
-            <div class="item c-item active" >
-              <img src={products[0].img} alt="Los Angeles"/>
-              <div className="move-to-cart" onClick={()=>{handleAddToCart(products[0])}}>MOVE TO CART</div>
->>>>>>> Stashed changes
               <div className="mr-803">
                 <div className="product_info">
                   <p class="product_name">
@@ -256,9 +249,8 @@ export default function Cart() {
                   </p>
                 </div>
               </div>
-<<<<<<< Updated upstream
             </div>
-            <div class="item">
+            <div class="item c-item">
               <img src={products[1].img} alt="Chicago" />
               <div className="move-to-cart" onClick={() => { handleAddToCart(products[1]) }}>MOVE TO CART</div>
               <div className="mr-803">
@@ -266,17 +258,6 @@ export default function Cart() {
                   <p class="product_name">
                     <a href="/products/adidas_running_alphabounce_beyond">{products[1].title}</a>
                   </p>
-=======
-          </div>
-          <div class="item c-item">
-            <img src={products[1].img} alt="Chicago"/>
-            <div className="move-to-cart" onClick={()=>{handleAddToCart(products[1])}}>MOVE TO CART</div>
-            <div className="mr-803">
-              <div className="product_info">
-                    <p class="product_name">
-                      <a href="/products/adidas_running_alphabounce_beyond">{products[1].title}</a>
-                    </p>
->>>>>>> Stashed changes
                 </div>
                 <div className="product_prop">
                   <p class="product_price">
@@ -286,8 +267,7 @@ export default function Cart() {
               </div>
             </div>
 
-<<<<<<< Updated upstream
-            <div class="item">
+            <div class="item c-item">
               <img src={products[2].img} alt="New York" />
               <div className="move-to-cart" onClick={() => { handleAddToCart(products[2]) }}>MOVE TO CART</div>
               <div className="mr-803">
@@ -295,16 +275,6 @@ export default function Cart() {
                   <p class="product_name">
                     <a href="/products/adidas_running_alphabounce_beyond">{products[2].title}</a>
                   </p>
-=======
-          <div class="item c-item">
-            <img src={products[2].img} alt="New York"/>
-            <div className="move-to-cart" onClick={()=>{handleAddToCart(products[2])}}>MOVE TO CART</div>
-            <div className="mr-803">
-              <div className="product_info">
-                    <p class="product_name">
-                      <a href="/products/adidas_running_alphabounce_beyond">{products[2].title}</a>
-                    </p>
->>>>>>> Stashed changes
                 </div>
                 <div className="product_prop">
                   <p class="product_price">
