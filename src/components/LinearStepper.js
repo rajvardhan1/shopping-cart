@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useForm, Controller, FormProvider, useFormContext } from "react-hook-form";
 import './styles/linearStepperStyle.css'
 import { Context } from './../contexts/cartContext'
+import { ErrorMessage } from "@hookform/error-message";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -38,7 +39,7 @@ function getSteps() {
   ];
 }
 const BasicForm = () => {
-  const { control } = useFormContext();
+  const { control, register, formState: { errors } } = useFormContext();
   return (
     <>
       <Controller
@@ -52,10 +53,26 @@ const BasicForm = () => {
             placeholder="Enter Your First Name"
             fullWidth
             margin="normal"
+            {...register("firstName", {
+              required: "First Name is required",
+              pattern: {
+                value: /^[a-zA-Z]{3,12}$/,
+                message: 'Please enter a valid character'
+              },
+              minLength: {
+                value: 3,
+                message: " Minimum length must be 3"
+              },
+              maxLength: {
+                value: 12,
+                message: " Max length must be 12."
+              }
+            })}
             {...field}
           />
         )}
       />
+      <ErrorMessage className="text-danger" errors={errors} name="firstName" as="p" />
 
       <Controller
         control={control}
@@ -68,11 +85,26 @@ const BasicForm = () => {
             placeholder="Enter Your Last Name"
             fullWidth
             margin="normal"
+            {...register("lastName", {
+              required: "Last Name is required",
+              pattern: {
+                value: /^[a-zA-Z]{3,12}$/,
+                message: 'Please enter a valid character'
+              },
+              minLength: {
+                value: 3,
+                message: " Minimum length must be 3"
+              },
+              maxLength: {
+                value: 12,
+                message: " Max length must be 12."
+              }
+            })}
             {...field}
           />
         )}
       />
-
+      <ErrorMessage className="text-danger" errors={errors} name="lastName" as="p" />
       <Controller
         control={control}
         name="email"
@@ -84,11 +116,18 @@ const BasicForm = () => {
             placeholder="Enter Your E-mail Address"
             fullWidth
             margin="normal"
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z]+)\.([a-zA-Z]{2,4})$/,
+                message: 'Please enter a valid character'
+              },
+            })}
             {...field}
           />
         )}
       />
-
+      <ErrorMessage className="text-danger" errors={errors} name="email" as="p" />
       <Controller
         control={control}
         name="phoneNumber"
@@ -100,16 +139,24 @@ const BasicForm = () => {
             placeholder="Enter Your Phone Number"
             fullWidth
             margin="normal"
+            {...register("phoneNumber", {
+              required: "Phone Number is required",
+              pattern: {
+                value: /^([+]\d{2})?\d{10}$/,
+                message: 'Please enter a valid numbers'
+              },
+            })}
             {...field}
           />
         )}
       />
+      <ErrorMessage className="text-danger" errors={errors} name="phoneNumber" as="p" />
     </>
   );
 };
 
 const AddressForm = () => {
-  const { control } = useFormContext();
+  const { control, register, formState: { errors } } = useFormContext();
   return (
     <>
       <Controller
@@ -117,16 +164,19 @@ const AddressForm = () => {
         name="addressLine1"
         render={({ field }) => (
           <TextField
-            id="address1"
-            label="Address 1"
+            id="addressLine1"
+            label="Address"
             variant="standard"
             placeholder="Enter Your Address 1"
             fullWidth
             margin="normal"
+            {...register("addressLine1", { required: "Address is required" })}
             {...field}
           />
         )}
       />
+      <ErrorMessage className="text-danger" errors={errors} name="addressLine1" as="p" />
+
       <Controller
         control={control}
         name="postalCode"
@@ -138,10 +188,19 @@ const AddressForm = () => {
             placeholder="Enter Your Postal code"
             fullWidth
             margin="normal"
+            {...register("postalCode", {
+              required: "postalCode is required",
+              pattern: {
+                value: /^[0-9]{6}$/,
+                message: 'Please enter a valid numbers'
+              },
+            })}
             {...field}
           />
         )}
       />
+      <ErrorMessage className="text-danger" errors={errors} name="postalCode" as="p" />
+
       <Controller
         control={control}
         name="city"
@@ -153,10 +212,12 @@ const AddressForm = () => {
             placeholder="Enter Your city Name"
             fullWidth
             margin="normal"
+            {...register("city", { required: "city is required" })}
             {...field}
           />
         )}
       />
+      <ErrorMessage className="text-danger" errors={errors} name="city" as="p" />
 
       <Controller
         control={control}
@@ -169,10 +230,12 @@ const AddressForm = () => {
             placeholder="Enter Your state Name"
             fullWidth
             margin="normal"
+            {...register("state", { required: "State is required" })}
             {...field}
           />
         )}
       />
+      <ErrorMessage className="text-danger" errors={errors} name="state" as="p" />
 
       <Controller
         control={control}
@@ -185,15 +248,17 @@ const AddressForm = () => {
             placeholder="Enter Your Country Name"
             fullWidth
             margin="normal"
+            {...register("country", { required: "country is required" })}
             {...field}
           />
         )}
       />
+      <ErrorMessage className="text-danger" errors={errors} name="country" as="p" />
     </>
   );
 };
 const PaymentForm = () => {
-  const { control } = useFormContext();
+  const { control, register, formState: { errors } } = useFormContext();
   return (
     <>
       <Controller
@@ -207,10 +272,19 @@ const PaymentForm = () => {
             placeholder="Enter Your Card Number"
             fullWidth
             margin="normal"
+            {...register("cardNumber", {
+              required: "cardNumber is required",
+              pattern: {
+                value: /^[0-9]{16}$/,
+                message: 'Please enter a valid numbers'
+              },
+            })}
             {...field}
           />
         )}
       />
+      <ErrorMessage className="text-danger" errors={errors} name="cardNumber" as="p" />
+
       <Controller
         control={control}
         name="cvv"
@@ -222,10 +296,19 @@ const PaymentForm = () => {
             placeholder="Enter Your Cvv"
             fullWidth
             margin="normal"
+            {...register("cvv", {
+              required: "Cvv is required",
+              pattern: {
+                value: /^[0-9]{3}$/,
+                message: 'Please enter a valid numbers'
+              },
+            })}
             {...field}
           />
         )}
       />
+      <ErrorMessage className="text-danger" errors={errors} name="cvv" as="p" />
+
       <Controller
         control={control}
         name="expMonth"
@@ -237,10 +320,19 @@ const PaymentForm = () => {
             placeholder="Enter Your Expiry Month"
             fullWidth
             margin="normal"
+            {...register("expMonth", {
+              required: "Expiry Month is required",
+              pattern: {
+                value: /^(0[1-9]|1[0-2])$/,
+                message: 'Please enter a valid month'
+              },
+            })}
             {...field}
           />
         )}
       />
+      <ErrorMessage className="text-danger" errors={errors} name="expMonth" as="p" />
+
       <Controller
         control={control}
         name="expYear"
@@ -252,10 +344,18 @@ const PaymentForm = () => {
             placeholder="Enter Your Expiry Year"
             fullWidth
             margin="normal"
+            {...register("expYear", {
+              required: "Expiry Year is required",
+              pattern: {
+                value: /^[0-9]{2}$/,
+                message: 'Please enter a valid year'
+              },
+            })}
             {...field}
           />
         )}
       />
+      <ErrorMessage className="text-danger" errors={errors} name="expYear" as="p" />
     </>
   );
 };
@@ -280,9 +380,9 @@ const LinaerStepper = () => {
     defaultValues: {
       firstName: "",
       lastName: "",
-      emailAddress: "",
+      email: "",
       phoneNumber: "",
-      address1: "",
+      addressLine1: '',
       postalCode: "",
       city: "",
       state: "",

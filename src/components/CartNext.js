@@ -52,7 +52,7 @@ export default function CartNext() {
         <>
           <ul className="collection">
             {
-              products.map((product, index) => {
+              cart.map((product, index) => {
                 return (
                   <li className="collection-product avatar" key={product.id}>
                     <div className="product-img">
