@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
 import { Context } from './../contexts/cartContext'
@@ -19,29 +19,29 @@ export default function Cart() {
       "quantity": 1
     },
     {
-      "id":2 ,
+      "id": 2,
       "title": "NIKE",
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
       "price": 500,
       "img": "//cdn.shopify.com/s/files/1/0024/1726/2691/products/clarks_desert_boot_1_370x370_crop_top.jpg?v=1553849295",
-      "quantity": 3
+      "quantity": 1
     },
     {
-      "id":3 ,
+      "id": 3,
       "title": "New Balance",
       "desc": "Balance onsectetur adipisicing elit. Minima, ex.",
       "price": 1500,
       "img": "//cdn.shopify.com/s/files/1/0024/1726/2691/products/converse_chuck_taylor_all_star_leather_hi_1_370x370_crop_top.jpg?v=1553849322",
-      "quantity": 3
+      "quantity": 1
     }
   ]
-  
+
   const handleAddToCart = (product) => {
     cartIds.indexOf(product.id) == -1 ? addToCart(product) : removeFromCart(product.id);
   }
 
   const [total, setTotal] = useState(0)
-  const { cart,addToCart,cartIds, removeFromCart } = useContext(Context)
+  const { cart, addToCart, cartIds, removeFromCart } = useContext(Context)
 
   const [show, setShow] = useState(false);
 
@@ -54,7 +54,20 @@ export default function Cart() {
 
   const handleOrder = () => {
     window.location.href = "/checkout"
-  } 
+  }
+
+  const productTotal = (products) => {
+    let total = 0;
+    products.map((item, ind) => {
+      total += item.price * item.quantity;
+    })
+    setTotal(total)
+  }
+
+  useEffect(() => {
+    productTotal(cart);
+  }, [cart])
+
 
   const handlePayment = (token) => {
 
@@ -202,33 +215,33 @@ export default function Cart() {
         </Card>
         <Card className="cart cart-details">
           <h6>PRICE DETAILS</h6><br />
-          <div className="box price-details">
-            <span>Price(2 items)</span>
-            <span>1</span>
+          <div className="box price-detaicartIds.indexOf(product.id) == -1 ? 'add' : 'remove'}ls">
+            <span>Price({cart.length} items)</span>
+            <span>{total ? total : 0}</span>
           </div>
           <div className="box price-details">
             <span><b>Total</b></span>
-            <span><b>$67</b></span>
+            <span><b>${total ? total : 0}</b></span>
           </div>
         </Card>
       </div>
       <>
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
 
-        <div class="carousel-inner">
+          <div class="carousel-inner">
             <div class="item active" >
-              <img src={products[0].img} alt="Los Angeles"/>
-              <div className="move-to-cart" onClick={()=>{handleAddToCart(products[0])}}>MOVE TO CART</div>
+              <img src={products[0].img} alt="Los Angeles" />
+              <div className="move-to-cart" onClick={() => { handleAddToCart(products[0]) }}>{cartIds.indexOf(products[0].id) == -1 ? 'MOVE TO CART' : 'REMOVE FROM CART'} </div>
               <div className="mr-803">
                 <div className="product_info">
-                    <p class="product_name">
-                      <a href="/products/adidas_running_alphabounce_beyond">{products[0].title}</a>
-                    </p>
+                  <p class="product_name">
+                    <a href="/products/adidas_running_alphabounce_beyond">{products[0].title}</a>
+                  </p>
                 </div>
                 <div className="product_prop">
                   <p class="product_price">
@@ -236,15 +249,15 @@ export default function Cart() {
                   </p>
                 </div>
               </div>
-          </div>
-          <div class="item">
-            <img src={products[1].img} alt="Chicago"/>
-            <div className="move-to-cart" onClick={()=>{handleAddToCart(products[1])}}>MOVE TO CART</div>
-            <div className="mr-803">
-              <div className="product_info">
-                    <p class="product_name">
-                      <a href="/products/adidas_running_alphabounce_beyond">{products[1].title}</a>
-                    </p>
+            </div>
+            <div class="item">
+              <img src={products[1].img} alt="Chicago" />
+              <div className="move-to-cart" onClick={() => { handleAddToCart(products[1]) }}>MOVE TO CART</div>
+              <div className="mr-803">
+                <div className="product_info">
+                  <p class="product_name">
+                    <a href="/products/adidas_running_alphabounce_beyond">{products[1].title}</a>
+                  </p>
                 </div>
                 <div className="product_prop">
                   <p class="product_price">
@@ -254,33 +267,33 @@ export default function Cart() {
               </div>
             </div>
 
-          <div class="item">
-            <img src={products[2].img} alt="New York"/>
-            <div className="move-to-cart" onClick={()=>{handleAddToCart(products[2])}}>MOVE TO CART</div>
-            <div className="mr-803">
-              <div className="product_info">
-                    <p class="product_name">
-                      <a href="/products/adidas_running_alphabounce_beyond">{products[2].title}</a>
-                    </p>
+            <div class="item">
+              <img src={products[2].img} alt="New York" />
+              <div className="move-to-cart" onClick={() => { handleAddToCart(products[2]) }}>MOVE TO CART</div>
+              <div className="mr-803">
+                <div className="product_info">
+                  <p class="product_name">
+                    <a href="/products/adidas_running_alphabounce_beyond">{products[2].title}</a>
+                  </p>
                 </div>
                 <div className="product_prop">
                   <p class="product_price">
                     <span class="money" data-currency-usd="$19.00">{products[2].price}</span>
                   </p>
                 </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
       </>
       <PaymentModal
         show={show}
