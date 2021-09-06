@@ -210,7 +210,7 @@ export default function Cart() {
             }
           </ul>
           <Card.Footer>
-            <button className="waves-effect waves-light btn  placeOrder-btn"><Link to="/checkout">PLACE ORDER</Link> </button>
+            <Link to="/checkout"><button className="waves-effect waves-light btn  placeOrder-btn">PLACE ORDER</button></Link>
           </Card.Footer>
         </Card>
         <Card className="cart cart-details">
