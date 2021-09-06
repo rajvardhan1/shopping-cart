@@ -45,8 +45,9 @@ a{
     justify-content: center !important;
 }
 .item{
-    margin-top: 69px;
-    text-align: center;     
+    margin-top: 116px !important;
+    /* text-align: center; */
+    margin: 33px;     
 }
 .hero-boder-top {
     position: relative;

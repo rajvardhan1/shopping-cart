@@ -33,7 +33,15 @@ export default function Cart() {
       "price": 1500,
       "img": "//cdn.shopify.com/s/files/1/0024/1726/2691/products/converse_chuck_taylor_all_star_leather_hi_1_370x370_crop_top.jpg?v=1553849322",
       "quantity": 1
-    }
+    },
+    {
+      "id": 4,
+      "title": "NIKE",
+      "desc": "Lorem ipsum dolor sit  elit. Minima, ex.",
+      "price": 2000,
+      "img": "https://cdn.shopify.com/s/files/1/0192/8264/products/d5909b3ba9542fcfd04622be594c10c92069928f_large.png?v=1622762867",
+      "quantity": 1
+    },
   ]
 
   const handleAddToCart = (product) => {
@@ -234,7 +242,7 @@ export default function Cart() {
           </ol>
 
           <div class="carousel-inner">
-            <div class="item active" >
+            <div class="item active c-item" >
               <img src={products[0].img} alt="Los Angeles" />
               <div className="move-to-cart" onClick={() => { handleAddToCart(products[0]) }}>{cartIds.indexOf(products[0].id) == -1 ? 'MOVE TO CART' : 'REMOVE FROM CART'} </div>
               <div className="mr-803">
@@ -279,6 +287,23 @@ export default function Cart() {
                 <div className="product_prop">
                   <p class="product_price">
                     <span class="money" data-currency-usd="$19.00">{products[2].price}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="item c-item">
+              <img src={products[3].img} alt="New York" width="370px" height="370px"/>
+              <div className="move-to-cart" onClick={() => { handleAddToCart(products[3]) }}>MOVE TO CART</div>
+              <div className="mr-803">
+                <div className="product_info">
+                  <p class="product_name">
+                    <a href="/products/adidas_running_alphabounce_beyond">{products[3].title}</a>
+                  </p>
+                </div>
+                <div className="product_prop">
+                  <p class="product_price">
+                    <span class="money" data-currency-usd="$19.00">{products[3].price}</span>
                   </p>
                 </div>
               </div>

@@ -25,3 +25,19 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
     color: black !important;
     background-color: #82B1FF !important;
 }
+.detailsForm{
+    background-color: white !important;
+    margin-top: 90px;
+}
+.createh6{
+    margin-top: 25px;
+    text-align: center;
+}
+input[type=checkbox]:focus, input[type=file]:focus, input[type=radio]:focus {
+    outline: none !important; 
+    outline-offset: -2px;
+}
+input[type=file] {
+    display: block;
+    margin-top: 25px !important;
+}
