@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import Profile from './components/Profile';
 import LinaerStepper from './components/LinearStepper';
 import CartNext from './components/CartNext';
+import CreateProduct from './components/CreateProduct';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/checkout" component={LinaerStepper} />
             <Route exact path="/order-details" component={CartNext} />
+            <Route exact path="/create" component={CreateProduct} />
           </switch>
         </div>
       </CartContext>

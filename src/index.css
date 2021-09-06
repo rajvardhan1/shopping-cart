@@ -104,6 +104,7 @@ body{
 }
 
 .checkout-btn{
+  margin-top: 40px;
   width: 60% !important;
   margin-left: 120px !important;
   background-color: #82B1FF !important;
@@ -320,14 +321,20 @@ nav-wrapper {
 
 .carousel-inner {
   position: relative;
-  width: 100%;
+  width: 33%;
   overflow: hidden;
   left: 450px;
+  display: inline-flex;
+  border: 1px solid;
+  padding: 11px;
+  border: 1px solid #f0f0f0!important;
+  top: 20px;
+  margin-bottom: 30px;
 }
 
-.c-item img{
+/* .c-item img{
   border: 1px solid #f0f0f0!important;
-}
+} */
 .carousel {
   top: 45px;
   background-color: white;
@@ -361,7 +368,7 @@ nav-wrapper {
 .move-to-cart{
   position: absolute;
   left: 226px;
-  top: 11px;
+  top: 390px;
   display: inline-block;
   text-transform: uppercase;
   box-shadow: none;
