@@ -368,7 +368,7 @@ nav-wrapper {
 }
 .move-to-cart{
   position: absolute;
-  left: 226px;
+  left: 152px;
   top: 390px;
   display: inline-block;
   text-transform: uppercase;
@@ -388,6 +388,16 @@ nav-wrapper {
 .download{
   margin: 10px;
   border: aliceblue;
+}
+.textfield{
+  background-color: white !important;
+}
+
+input:-internal-autofill-selected {
+  appearance: menulist-button;
+  background-color: white !important;
+  background-image: none !important;
+  color: -internal-light-dark(black, white) !important;
 }
 /* .payment-btn{
   display: inline-grid;

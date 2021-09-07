@@ -30,9 +30,10 @@ export default function CartNext() {
 
  const pdfGenerate = () =>{
      var doc = new jsPDF('landscape','px','a4','false');
-     
+     var len 
      products.map((product, index) => {
-      doc.addImage(product.img,'PNG',25,15,150,150)
+      len = products.length
+      doc.addImage(product.img,'PNG',25,15,150+index,150 + index)
       doc.setFont('Helvertica','bold')
       doc.text(200,60,'Title')
       doc.text(200,80,'Description')
@@ -43,8 +44,10 @@ export default function CartNext() {
       doc.text(270,80, product.desc)
       doc.text(250,100, "2000")
       doc.text(260,120, "2")
-      doc.addPage()
+      doc.addPage(1)
      })
+
+     doc.deletePage(2+1)
      doc.save('a.pdf')
   }
   return (

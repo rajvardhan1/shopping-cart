@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TextField } from "@material-ui/core";
 import axios from 'axios';
 import './styles/linearStepperStyle.css';
+import Alert from '@material-ui/lab/Alert';
 
 function CreateProduct(props) {
   const [productInfo, setProductInfo] = useState({
@@ -12,6 +13,9 @@ function CreateProduct(props) {
   })
   const [image, setImage] = useState()
   const [imagePreview, setImagePreview] = useState()
+  const [show, setShow] = useState(false);
+  const [message, setMessage] = useState('');
+
   const uploadImage = async (e) => {
     const file = e.target?.files[0];
     setImage(file)
@@ -58,13 +62,19 @@ function CreateProduct(props) {
           'content-type': 'application/json',
         },
       })
-      console.log('res', res)
+      setShow(true)
+      setMessage('Item created successfully')
+      setTimeout(() => {
+        setShow(false);
+        window.location.reload()
+        }, 1500);
     } catch (error) {
       console.log(error)
     }
   }
   return (
     <div className="container createProduct">
+      {show &&  <Alert className="success" severity="success">{message}</Alert> }
       <form onSubmit={handleSubmit} className="basicForm detailsForm">
         <h6 className="createh6">ADD PRODUCT DETAILS </h6>
         <TextField
@@ -74,6 +84,7 @@ function CreateProduct(props) {
           variant="standard"
           placeholder="Enter Your title"
           fullWidth
+          className="textfield"
           margin="normal"
           onChange={(e) => handleChange(e, 'title')}
         />

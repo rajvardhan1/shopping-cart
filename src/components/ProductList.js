@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import products from '../products.json';
 import Product from './Product';
 import Card from 'react-bootstrap/Card';
@@ -10,15 +10,28 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Form from 'react-bootstrap/Form'
 import {Checkbox, FormControlLabel} from '@material-ui/core';
-import StarIcon from '@material-ui/icons/Star';
+import axios from 'axios';
 
 export default function ProductList() {
   const [checked, setChecked] = React.useState(false);
-
+  const [data, setData] = React.useState('');
+  
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
+   
+  useEffect(()=>{
+    const url = `http://localhost:8000/get-products`
+    axios.get(url)
+    .then((res) => {
+        setData(res.data)
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+  },[])
 
+  console.log(data.data)
   return (
     <>
       <Card className="container pd-card">
@@ -278,7 +291,7 @@ export default function ProductList() {
         <h3 className="center">Products</h3>
         <div className="box">
           {
-            products.map((product, index) => {
+            data?.data?.map((product, index) => {
               return <Product key={product.id} product={product} />
             })
           }

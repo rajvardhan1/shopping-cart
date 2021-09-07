@@ -41,21 +41,9 @@ const Navbar = (props) => {
                   </li>
                 </>
             }
-            {/* <li> Pay
-                <ul class="dropdown">
-                <li onClick={handleShow}>Stripe Payment</li>
-                <li onClick={handleShow}>Bluesnap Payment </li>
-              </ul>
-            </li> */}
           </ul>
         </div>
       </nav>
-      {/* <PaymentModal
-        show={show}
-        handleClose={handleClose}
-        handleShow={handleShow}
-      /> */}
-
     </>
   )
 }
