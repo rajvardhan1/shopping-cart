@@ -3,6 +3,7 @@ import { Card } from 'react-bootstrap';
 import CheckIcon from '@material-ui/icons/Check';
 import { Link } from 'react-router-dom';
 import { Context } from './../contexts/cartContext'
+import jsPDF from 'jspdf';
 
 export default function CartNext() {
   const [total, setTotal] = useState(0)
@@ -27,24 +28,27 @@ export default function CartNext() {
     }
   ]
 
+ const pdfGenerate = () =>{
+     var doc = new jsPDF('landscape','px','a4','false');
+     
+     products.map((product, index) => {
+      doc.addImage(product.img,'PNG',25,15,150,150)
+      doc.setFont('Helvertica','bold')
+      doc.text(200,60,'Title')
+      doc.text(200,80,'Description')
+      doc.text(200,100,'Price')
+      doc.text(200,120,'quantity')
+      doc.setFont('Helvertica','Normal')
+      doc.text(240,60, product.title)
+      doc.text(270,80, product.desc)
+      doc.text(250,100, "2000")
+      doc.text(260,120, "2")
+      doc.addPage()
+     })
+     doc.save('a.pdf')
+  }
   return (
     <div className="container">
-      {/* <Card className="cart next mt">
-          <div className="next-display">
-            <span className="count">1</span>   
-            <h5>LOGIN <CheckIcon className="check"/></h5>
-          </div>
-          <span className="name">Pooja Yadav</span>
-          <span style={{marginLeft:"6px"}}>+912731243215</span>
-        </Card>
-        <Card className="cart next">
-          <div className="next-display">
-            <span className="count">2</span> 
-            <h5>DELIVERY ADDRESS <CheckIcon className="check"/></h5>
-          </div>  
-          <span className="name">Pooja Yadav</span>
-          <span style={{marginLeft:"6px"}}>2/14 xyz Indore 452001</span>
-        </Card> */}
       <Card className="cart next">
         <div className="next-display">
           <h5>ORDER SUMMARY <CheckIcon className="check" /></h5>
@@ -52,7 +56,7 @@ export default function CartNext() {
         <>
           <ul className="collection">
             {
-              cart.map((product, index) => {
+              products.map((product, index) => {
                 return (
                   <li className="collection-product avatar" key={product.id}>
                     <div className="product-img">
@@ -67,34 +71,15 @@ export default function CartNext() {
                         {console.log('product', product.price)}
                         <b>Quantity: {product.quantity}</b>
                       </p>
-                      <div className="add-remove">
-                        <Link to="/cart"><i className="material-icons">arrow_drop_up</i></Link>
-                        <Link to="/cart"><i className="material-icons">arrow_drop_down</i></Link>
-                      </div>
-                      <button className="waves-effect waves-light btn pink remove">Remove</button>
                     </div>
-
                   </li>
                 )
               })
-            }
+            }  
           </ul>
         </>
+        <button className="download placeOrder-btn" onClick={()=>pdfGenerate()}> Download pdf</button>
       </Card>
-      {/* <Card className="cart next">
-          <div className="next-display">
-            <span className="count">4</span> 
-            <h5>PAYMENT OPTIONS <CheckIcon className="check"/></h5>
-          </div> 
-          <StripeCheckout
-              stripeKey={"pk_test_51JNbPvSB8bOa6XsJ6HMHPyDH7QEtbLFsDMYl6oAdMWvQt1pzIoueqGACWa2KddNUOrJMTzx7qnys0bTdHmDyx80f00kPn1Ej6L"}
-              token={handlePayment}
-              name="Stripe Payment"
-              amount={total * 100}
-            >
-              <button className="waves-effect waves-light btn green pay-btn">Pay Now</button>
-            </StripeCheckout> 
-        </Card> */}
     </div>
   )
 }

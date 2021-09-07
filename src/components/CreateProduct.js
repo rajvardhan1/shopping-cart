@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { useForm, Controller, FormProvider, useFormContext } from "react-hook-form";
-import { Typography, TextField, Button, Stepper, Step, StepLabel } from "@material-ui/core";
-import { ErrorMessage } from "@hookform/error-message";
+import { TextField } from "@material-ui/core";
 import axios from 'axios';
 import './styles/linearStepperStyle.css';
 
@@ -13,9 +11,12 @@ function CreateProduct(props) {
     quantity: "",
   })
   const [image, setImage] = useState()
+  const [imagePreview, setImagePreview] = useState()
   const uploadImage = async (e) => {
     const file = e.target?.files[0];
     setImage(file)
+    const base64 = await convertBase(file);
+    setImagePreview(base64)
   }
 
   const convertBase = (file) => {
@@ -43,11 +44,6 @@ function CreateProduct(props) {
   }
   const handleSubmit = async () => {
     const url = `http://localhost:8000/create-product`
-
-    const payload = JSON.stringify({
-      ...productInfo,
-      image
-    })
 
     const formData = new FormData();
 
@@ -130,7 +126,7 @@ function CreateProduct(props) {
           margin="normal"
           onChange={(e) => { uploadImage(e) }}
         />
-        <img src={image} height="100px" />
+        <img src={imagePreview} height="100px" />
         <button type="button" onClick={handleSubmit} class="btn btn-primary checkout-btn">Submit</button>
       </form>
     </div>

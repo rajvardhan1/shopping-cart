@@ -237,6 +237,7 @@ nav-wrapper {
   width: 750px;
   left: 40px !important;
   margin-top: 20px;
+  padding-bottom: 75px;
 }
 .mt{
   margin-top: 45px !important;
@@ -383,6 +384,10 @@ nav-wrapper {
 }
 .mr-803{
   margin-right: 803px;
+}
+.download{
+  margin: 10px;
+  border: aliceblue;
 }
 /* .payment-btn{
   display: inline-grid;
