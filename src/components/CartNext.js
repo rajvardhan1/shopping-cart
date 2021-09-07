@@ -31,23 +31,24 @@ export default function CartNext() {
  const pdfGenerate = () =>{
      var doc = new jsPDF('landscape','px','a4','false');
      var len 
+     doc.setFont('Helvertica','bold')
+     doc.text(45, 95,'ORDER SUMMARY')
      products.map((product, index) => {
       len = products.length
-      doc.addImage(product.img,'PNG',25,15,150+index,150 + index)
+      doc.addImage(product.img,'PNG',25,(index + 2)*75,100,100)
       doc.setFont('Helvertica','bold')
-      doc.text(200,60,'Title')
-      doc.text(200,80,'Description')
-      doc.text(200,100,'Price')
-      doc.text(200,120,'quantity')
+      doc.text(150,(index+1.5) * 95,'Title')
+      doc.text(150,(index+1.5) * 105,'Description')
+      doc.text(150,(index+1.5) * 115,'Price')
+      doc.text(150,(index+1.5) * 125,'quantity')
       doc.setFont('Helvertica','Normal')
-      doc.text(240,60, product.title)
-      doc.text(270,80, product.desc)
-      doc.text(250,100, "2000")
-      doc.text(260,120, "2")
-      doc.addPage(1)
+      doc.text(180,(index+1.5) * 95, product.title)
+      doc.text(220,(index+1.5) * 105, product.desc)
+      doc.text(180,(index+1.5) * 115, "2000")
+      doc.text(200,(index+1.5) * 125, "2")
      })
-
-     doc.deletePage(2+1)
+     doc.addPage(1)
+     doc.deletePage(len)
      doc.save('a.pdf')
   }
   return (
