@@ -55,7 +55,7 @@ function CreateProduct(props) {
       formData.append(key, value)
     })
     formData.append('image', image);
-
+   console.log('formdata',formData)
     try {
       const res = await axios.post(url, formData, {
         headers: {
@@ -66,7 +66,7 @@ function CreateProduct(props) {
       setMessage('Item created successfully')
       setTimeout(() => {
         setShow(false);
-        window.location.reload()
+         window.location.reload()
         }, 1500);
     } catch (error) {
       console.log(error)

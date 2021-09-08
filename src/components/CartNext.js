@@ -1,41 +1,39 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
 import CheckIcon from '@material-ui/icons/Check';
 import { Link } from 'react-router-dom';
 import { Context } from './../contexts/cartContext'
 import jsPDF from 'jspdf';
+import axios from 'axios';
 
 export default function CartNext() {
-  const [total, setTotal] = useState(0)
+  const [list, setList] = useState([])
   const { cart } = useContext(Context)
-
-  const products = [
-    {
-      "id": 3,
-      "title": "Vans",
-      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
-      "price": 500,
-      "img": "https://cdn.shopify.com/s/files/1/0236/3431/3280/files/a02_370x230@2x.jpg?v=1603564161",
-      "quantity": 1
-    },
-    {
-      "id": 4,
-      "title": "White",
-      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
-      "price": 55,
-      "img": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_450,h_450/global/380353/01/sv01/fnd/IND/fmt/png",
-      "quantity": 3
-    }
-  ]
-
+  
+  useEffect (()=>{
+    handleOrderList()
+  },[])
+  
+  const handleOrderList = (()=>{
+    const url = `http://localhost:8000/get-cart`
+    axios.get(url)
+    .then((res) => {
+      console.log('res',res);
+      setList(res?.data)
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+  })
  const pdfGenerate = () =>{
      var doc = new jsPDF('landscape','px','a4','false');
      var len 
      doc.setFont('Helvertica','bold')
      doc.text(45, 95,'ORDER SUMMARY')
-     products.map((product, index) => {
-      len = products.length
-      doc.addImage(product.img,'PNG',25,(index + 2)*75,100,100)
+     list?.data?.map((product, index) => {
+      len = list?.data?.length
+      console.log('len',len);
+      // doc.addImage(product.image,'PNG',25,(index + 2)*75,100,100)
       doc.setFont('Helvertica','bold')
       doc.text(150,(index+1.5) * 95,'Title')
       doc.text(150,(index+1.5) * 105,'Description')
@@ -43,7 +41,7 @@ export default function CartNext() {
       doc.text(150,(index+1.5) * 125,'quantity')
       doc.setFont('Helvertica','Normal')
       doc.text(180,(index+1.5) * 95, product.title)
-      doc.text(220,(index+1.5) * 105, product.desc)
+      doc.text(220,(index+1.5) * 105, product.description)
       doc.text(180,(index+1.5) * 115, "2000")
       doc.text(200,(index+1.5) * 125, "2")
      })
@@ -60,7 +58,7 @@ export default function CartNext() {
         <>
           <ul className="collection">
             {
-              products.map((product, index) => {
+              list?.data?.map((product, index) => {
                 return (
                   <li className="collection-product avatar" key={product.id}>
                     <div className="product-img">

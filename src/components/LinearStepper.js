@@ -1,35 +1,17 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Typography, TextField, Button, Stepper, Step, StepLabel } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useForm, Controller, FormProvider, useFormContext } from "react-hook-form";
 import './styles/linearStepperStyle.css'
 import { Context } from './../contexts/cartContext'
 import { ErrorMessage } from "@hookform/error-message";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   button: {
     marginRight: theme.spacing(1),
   },
 }));
-
-const products = [
-  {
-    "id": 3,
-    "title": "Vans",
-    "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
-    "price": 500,
-    "img": "https://cdn.shopify.com/s/files/1/0236/3431/3280/files/a02_370x230@2x.jpg?v=1603564161",
-    "quantity": 1
-  },
-  {
-    "id": 4,
-    "title": "White",
-    "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
-    "price": 55,
-    "img": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_450,h_450/global/380353/01/sv01/fnd/IND/fmt/png",
-    "quantity": 3
-  }
-]
 
 function getSteps() {
   return [
@@ -394,21 +376,37 @@ const LinaerStepper = () => {
     },
   });
   const [activeStep, setActiveStep] = useState(0);
-  const [skippedSteps, setSkippedSteps] = useState([]);
+  const [list, setList] = useState([]);
   const steps = getSteps();
   const [total, setTotal] = useState(0)
   const { cart } = useContext(Context)
+  
+  useEffect (()=>{
+    handleCartDetails()
+  },[])
+
+  const handleCartDetails = (()=>{
+    const url = `http://localhost:8000/get-cart`
+    axios.get(url)
+    .then((res) => {
+      console.log('res',res);
+      setList(res?.data?.data)
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+  })
 
   const handleNext = (data) => {
     let total1 = 0;
     console.log(cart, ' cartData')
-    cart.map((item, ind) => {
+    list.map((item, ind) => {
       total1 += item.price
     })
     setTotal(total1)
     console.log(total1, ' total')
     const body = {
-      products: products,
+      products: list,
       total: total1,
       ...data
     }

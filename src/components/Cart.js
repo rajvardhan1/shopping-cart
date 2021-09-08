@@ -6,9 +6,10 @@ import PaymentModal from './Dialogs/PaymentModal';
 import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel'
 import shoes1 from '../assets/shoes1.jpg'
+import axios from 'axios';
 
 export default function Cart() {
-  const [quantity, setQuantity] = useState(null)
+  const [data, setData] = useState()
   const products = [
     {
       "id": 1,
@@ -53,15 +54,17 @@ export default function Cart() {
 
   const [show, setShow] = useState(false);
 
+  useEffect(() => {
+    handleCart()
+    productTotal(cart);
+  }, [cart])
+
+ 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleRemove = (id) => {
     removeFromCart(id);
-  }
-
-  const handleOrder = () => {
-    window.location.href = "/checkout"
   }
 
   const productTotal = (products) => {
@@ -72,122 +75,26 @@ export default function Cart() {
     setTotal(total)
   }
 
-  useEffect(() => {
-    productTotal(cart);
-  }, [cart])
-
-
-  const handlePayment = (token) => {
-
-    let total = 0;
-    products.map((item, ind) => {
-      total += item.price
+  const handleCart = (()=>{
+    const url = `http://localhost:8000/get-cart`
+    axios.get(url)
+    .then((res) => {
+      console.log('res',res);
+        setData(res?.data)
     })
-
-
-    setTotal(total)
-
-    console.log(token, 'token');
-
-    const body = {
-      token,
-      products: products,
-      total
-    }
-
-    const headers = {
-      "Content-Type": "application/json"
-    }
-
-    return fetch(`http://localhost:8000/stripe-payment`, {
-      method: "POST",
-      headers,
-      body: JSON.stringify(body)
-    }).then(response => {
-      console.log(response, ' Response');
+    .catch((err) => {
+        console.log(err)
     })
-      .catch((err) => console.log(err))
-  }
-
-  const redirectToPayU = (pd) => {
-    window.bolt.launch(pd, {
-      responseHandler: function (response) {
-        fetch('http://localhost:8000/payu-payment', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(response.response)
-        })
-          .then(function (a) {
-            return a.json();
-          })
-          .then(function (json) {
-            console.log(json);
-          });
-      },
-      catchException: function (response) {
-        console.log(response, ' error')
-      }
-    });
-  }
-
-  const handlePayuPayment = () => {
-
-    let total = 0;
-    cart.map((item, ind) => {
-      total += item.price
-    })
-    console.log(total, 'total')
-
-    var pd = {
-      key: "GeKTPS",
-      txnid: "PQI6MqpYrjEefU",
-      amount: total,
-      firstname: "Raj",
-      email: "raj@test.com",
-      phone: "8989898989",
-      productinfo: "Different brands of shoes",
-      surl: "http:/localhost:3000/cart",
-      furl: "http:/localhost:3000/cart",
-      hash: ""
-    }
-
-    let data = {
-      txnid: pd.txnid,
-      email: pd.email,
-      amount: pd.amount,
-      productinfo: pd.productinfo,
-      firstname: pd.firstname
-    }
-
-    fetch('http://localhost:8000/generate-hash', {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-
-      body: JSON.stringify(data)
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        console.log(response, ' response')
-        pd.hash = response['hash']
-        redirectToPayU(pd);
-      })
-  }
-
+  })
+  
   return (
     <>
       <div className="container cart-container">
         <Card className="cart">
           <h5>My Cart </h5>
           <ul className="collection">
-            {console.log('cart', cart)}
             {
-              cart.map((product, index) => {
+              data?.data?.map((product, index) => {
                 return (
                   <li className="collection-product avatar" key={product.id}>
                     <div className="product-img">
@@ -197,15 +104,12 @@ export default function Cart() {
                     <div className="product-desc">
                       <span className="title">{product.title}</span>
                       <span>{product.desc}</span>
-                      <span><b>Price: {product.price}$</b></span>
+                      <span><b>Price: {product.price}</b></span>
                       <p>
                         {console.log('product', product.price)}
                         <b>Quantity: {product.quantity}</b>
                       </p>
-                      <div className="add-remove">
-                        {/* <Link to="/cart"><i className="material-icons">arrow_drop_up</i></Link>
-                        <Link to="/cart"><i className="material-icons">arrow_drop_down</i></Link> */}
-                      </div>
+  
                       <button
                         className="waves-effect waves-light btn pink remove"
                         onClick={() => handleRemove(product.id)}
@@ -244,7 +148,7 @@ export default function Cart() {
           <div class="carousel-inner">
             <div class="item active c-item" >
               <img src={products[0].img} alt="Los Angeles" />
-              <div className="move-to-cart" onClick={() => { handleAddToCart(products[0]) }}>{cartIds.indexOf(products[0].id) == -1 ? 'MOVE TO CART' : 'REMOVE FROM CART'} </div>
+              {/* <div className="move-to-cart" onClick={() => { handleAddToCart(products[0]) }}>{cartIds.indexOf(products[0].id) == -1 ? 'MOVE TO CART' : 'REMOVE FROM CART'} </div> */}
               <div className="mr-803">
                 <div className="product_info">
                   <p class="product_name">
@@ -260,7 +164,7 @@ export default function Cart() {
             </div>
             <div class="item c-item">
               <img src={products[1].img} alt="Chicago" />
-              <div className="move-to-cart" onClick={() => { handleAddToCart(products[1]) }}>MOVE TO CART</div>
+              {/* <div className="move-to-cart" onClick={() => { handleAddToCart(products[1]) }}>MOVE TO CART</div> */}
               <div className="mr-803">
                 <div className="product_info">
                   <p class="product_name">
@@ -277,7 +181,7 @@ export default function Cart() {
 
             <div class="item c-item">
               <img src={products[2].img} alt="New York" />
-              <div className="move-to-cart" onClick={() => { handleAddToCart(products[2]) }}>MOVE TO CART</div>
+              {/* <div className="move-to-cart" onClick={() => { handleAddToCart(products[2]) }}>MOVE TO CART</div> */}
               <div className="mr-803">
                 <div className="product_info">
                   <p class="product_name">
@@ -294,7 +198,7 @@ export default function Cart() {
 
             <div class="item c-item">
               <img src={products[3].img} alt="New York" width="370px" height="370px"/>
-              <div className="move-to-cart" onClick={() => { handleAddToCart(products[3]) }}>MOVE TO CART</div>
+              {/* <div className="move-to-cart" onClick={() => { handleAddToCart(products[3]) }}>MOVE TO CART</div> */}
               <div className="mr-803">
                 <div className="product_info">
                   <p class="product_name">
