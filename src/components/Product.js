@@ -8,7 +8,7 @@ export default function Product(props) {
   const { addToCart, cartIds, removeFromCart } = useContext(Context)
 
   const handleAddToCart = (product) => {
-    cartIds.indexOf(product.id) == -1 ? addToCart(product) : removeFromCart(product.id);
+    cartIds.indexOf(product.product_id) == -1 ? addToCart(product) : removeFromCart(product.product_id);
   }
    
   return (

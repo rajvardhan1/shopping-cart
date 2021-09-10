@@ -386,7 +386,7 @@ const LinaerStepper = () => {
   },[])
 
   const handleCartDetails = (()=>{
-    const url = `http://localhost:8000/get-cart`
+    const url = `http://localhost:8000/cart`
     axios.get(url)
     .then((res) => {
       console.log('res',res);
@@ -404,7 +404,7 @@ const LinaerStepper = () => {
       total1 += item.price
     })
     setTotal(total1)
-    console.log(total1, ' total')
+    
     const body = {
       products: list,
       total: total1,

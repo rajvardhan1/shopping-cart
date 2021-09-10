@@ -66,7 +66,7 @@ function CreateProduct(props) {
       setMessage('Item created successfully')
       setTimeout(() => {
         setShow(false);
-         window.location.reload()
+        //  window.location.reload()
         }, 1500);
     } catch (error) {
       console.log(error)

@@ -1,11 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import StripeCheckout from 'react-stripe-checkout';
 import { Context } from './../contexts/cartContext'
 import PaymentModal from './Dialogs/PaymentModal';
 import Card from 'react-bootstrap/Card';
-import Carousel from 'react-bootstrap/Carousel'
-import shoes1 from '../assets/shoes1.jpg'
 import axios from 'axios';
 
 export default function Cart() {
@@ -45,19 +42,15 @@ export default function Cart() {
     },
   ]
 
-  const handleAddToCart = (product) => {
-    cartIds.indexOf(product.id) == -1 ? addToCart(product) : removeFromCart(product.id);
-  }
-
   const [total, setTotal] = useState(0)
   const { cart, addToCart, cartIds, removeFromCart } = useContext(Context)
-
+  console.log('........',cart);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
     handleCart()
-    productTotal(cart);
-  }, [cart])
+    productTotal();
+  },[])
 
  
   const handleClose = () => setShow(false);
@@ -67,26 +60,27 @@ export default function Cart() {
     removeFromCart(id);
   }
 
-  const productTotal = (products) => {
-    let total = 0;
-    products.map((item, ind) => {
-      total += item.price * item.quantity;
+  const productTotal = () => {
+    let total 
+    data?.map((item, ind) => {
+      total += item.price;
     })
     setTotal(total)
   }
 
   const handleCart = (()=>{
-    const url = `http://localhost:8000/get-cart`
+    const url = `http://localhost:8000/cart`
     axios.get(url)
     .then((res) => {
       console.log('res',res);
-        setData(res?.data)
+        setData(res?.data?.data)
     })
     .catch((err) => {
         console.log(err)
     })
   })
-  
+
+   console.log('data',data);
   return (
     <>
       <div className="container cart-container">
@@ -94,7 +88,7 @@ export default function Cart() {
           <h5>My Cart </h5>
           <ul className="collection">
             {
-              data?.data?.map((product, index) => {
+              data?.map((product, index) => {
                 return (
                   <li className="collection-product avatar" key={product.id}>
                     <div className="product-img">
@@ -103,16 +97,16 @@ export default function Cart() {
 
                     <div className="product-desc">
                       <span className="title">{product.title}</span>
-                      <span>{product.desc}</span>
+                      <span>{product.description}</span><br/>
                       <span><b>Price: {product.price}</b></span>
                       <p>
                         {console.log('product', product.price)}
-                        <b>Quantity: {product.quantity}</b>
+                        <b>Quantity: 1 </b>
                       </p>
   
                       <button
                         className="waves-effect waves-light btn pink remove"
-                        onClick={() => handleRemove(product.id)}
+                        onClick={() => handleRemove(product.product_id)}
                       >Remove</button>
                     </div>
 
@@ -128,8 +122,15 @@ export default function Cart() {
         <Card className="cart cart-details">
           <h6>PRICE DETAILS</h6><br />
           <div className="box price-detaicartIds.indexOf(product.id) == -1 ? 'add' : 'remove'}ls">
-            <span>Price({cart.length} items)</span>
-            <span>{total ? total : 0}</span>
+          <span>Price({data?.length} items)</span>
+              {
+                data?.map((product, index) => {
+                  return (
+                    <>
+                      <span>{product.price ? product.price : 0}</span>
+                    </>
+                  )})
+              }
           </div>
           <div className="box price-details">
             <span><b>Total</b></span>

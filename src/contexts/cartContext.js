@@ -14,13 +14,11 @@ const CartContext = ({ children }) => {
     const addToCart = async (product) => {
         console.log('cartxxx',product)
 
-        const url = `http://localhost:8000/create-product`
+        const url = `http://localhost:8000/add-product`
         const body = {
-            title: product.title,
-            description: product.description,
-            price: product.price,
-            quantity: product.quantity,
-            image: product.image
+            product_id: product.id,
+            user_id: 2,
+            product_count: 1
         }
         console.log('formdata',body)
         try {

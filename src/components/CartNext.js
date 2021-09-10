@@ -15,7 +15,7 @@ export default function CartNext() {
   },[])
   
   const handleOrderList = (()=>{
-    const url = `http://localhost:8000/get-cart`
+    const url = `http://localhost:8000/order-details`
     axios.get(url)
     .then((res) => {
       console.log('res',res);
@@ -44,8 +44,9 @@ export default function CartNext() {
       doc.text(220,(index+1.5) * 105, product.description)
       doc.text(180,(index+1.5) * 115, "2000")
       doc.text(200,(index+1.5) * 125, "2")
+      doc.addPage(1)
      })
-     doc.addPage(1)
+     
      doc.deletePage(len)
      doc.save('a.pdf')
   }
@@ -67,11 +68,11 @@ export default function CartNext() {
 
                     <div className="product-desc">
                       <span className="title">{product.title}</span>
-                      <span>{product.desc}</span>
-                      <span><b>Price: {product.price}$</b></span>
+                      <span>{product.description}</span><br/>
+                      <span><b>Price: {product.price}$</b></span> 
                       <p>
                         {console.log('product', product.price)}
-                        <b>Quantity: {product.quantity}</b>
+                        <b>Quantity: 1 </b>
                       </p>
                     </div>
                   </li>

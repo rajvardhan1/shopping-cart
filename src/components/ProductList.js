@@ -292,7 +292,7 @@ export default function ProductList() {
         <div className="box">
           {
             data?.data?.map((product, index) => {
-              return <Product key={product.id} product={product} />
+              return <Product key={product.product_id} product={product} />
             })
           }
         </div>
