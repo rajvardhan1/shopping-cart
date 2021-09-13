@@ -47,7 +47,7 @@ function CreateProduct(props) {
 
   }
   const handleSubmit = async () => {
-    const url = `http://localhost:8000/create-product`
+    const url = `http://localhost:9000/create-product`
 
     const formData = new FormData();
 
@@ -66,7 +66,7 @@ function CreateProduct(props) {
       setMessage('Item created successfully')
       setTimeout(() => {
         setShow(false);
-        //  window.location.reload()
+          window.location.reload()
         }, 1500);
     } catch (error) {
       console.log(error)

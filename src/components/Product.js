@@ -8,21 +8,22 @@ export default function Product(props) {
   const { addToCart, cartIds, removeFromCart } = useContext(Context)
 
   const handleAddToCart = (product) => {
-    cartIds.indexOf(product.product_id) == -1 ? addToCart(product) : removeFromCart(product.product_id);
+    cartIds.indexOf(product.id) == -1 ? addToCart(product) : removeFromCart(product.id);
   }
    
   return (
     <div className="card">
       <div className="card-image">
-        <img src={product?.image} alt={product.title} />
-        <span className="card-title">{product.title}</span>
+        <img className="card-img" src={product?.image} alt={product.title} />
+      </div >
+      <div className="d-flex" >
+      <span className="card-title">{product.title}</span>
         <span to="/" className="btn-floating halfway-fab waves-effect waves-light red"
           onClick={() => handleAddToCart(product)}
         >
           <i className="material-icons">{cartIds.indexOf(product.id) == -1 ? 'add' : 'remove'}</i>
         </span>
-      </div >
-
+      </div>
       <div className="card-content">
         <p>{product.description}</p>
         <p><b>Price: {product.price}</b></p>

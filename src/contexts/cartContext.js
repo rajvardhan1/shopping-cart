@@ -14,7 +14,7 @@ const CartContext = ({ children }) => {
     const addToCart = async (product) => {
         console.log('cartxxx',product)
 
-        const url = `http://localhost:8000/add-product`
+        const url = `http://localhost:9000/add-product`
         const body = {
             product_id: product.id,
             user_id: 2,
@@ -48,7 +48,7 @@ const CartContext = ({ children }) => {
      }
     
     const removeFromCart = (id) => {
-        const url = `http://localhost:8000/delete-item/`+id
+        const url = `http://localhost:9000/delete-item/`+id
          
          const res = axios.delete(url)
          .then((res) => {

@@ -15,7 +15,7 @@ export default function CartNext() {
   },[])
   
   const handleOrderList = (()=>{
-    const url = `http://localhost:8000/order-details`
+    const url = `http://localhost:9000/order-details`
     axios.get(url)
     .then((res) => {
       console.log('res',res);
@@ -46,8 +46,7 @@ export default function CartNext() {
       doc.text(200,(index+1.5) * 125, "2")
       doc.addPage(1)
      })
-     
-     doc.deletePage(len)
+     doc.deletePage(len+1)
      doc.save('a.pdf')
   }
   return (
@@ -63,7 +62,7 @@ export default function CartNext() {
                 return (
                   <li className="collection-product avatar" key={product.id}>
                     <div className="product-img">
-                      <img src={product.img} alt={product.img} className="" />
+                      <img src={product.image} alt={product.image} className="" />
                     </div>
 
                     <div className="product-desc">

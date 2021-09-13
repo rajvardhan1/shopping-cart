@@ -28,7 +28,7 @@ export default function Contact() {
       subject: 'Test mail'
     }
 
-    fetch('http://localhost:8000/sendgrid-mail', {
+    fetch('http://localhost:9000/sendgrid-mail', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

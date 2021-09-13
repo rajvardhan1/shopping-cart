@@ -42,9 +42,9 @@ export default function Cart() {
     },
   ]
 
-  const [total, setTotal] = useState(0)
+  const [total, setTotal] = useState()
   const { cart, addToCart, cartIds, removeFromCart } = useContext(Context)
-  console.log('........',cart);
+  console.log('........',total);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -61,15 +61,17 @@ export default function Cart() {
   }
 
   const productTotal = () => {
-    let total 
+    let total = 0
     data?.map((item, ind) => {
-      total += item.price;
+      total = item.price + total;
+      console.log('total....',item.price);
     })
+    console.log('total',total);
     setTotal(total)
   }
 
   const handleCart = (()=>{
-    const url = `http://localhost:8000/cart`
+    const url = `http://localhost:9000/cart`
     axios.get(url)
     .then((res) => {
       console.log('res',res);
@@ -92,7 +94,7 @@ export default function Cart() {
                 return (
                   <li className="collection-product avatar" key={product.id}>
                     <div className="product-img">
-                      <img src={product.img} alt={product.img} className="" />
+                      <img src={product.image} alt={product.image} className="" />
                     </div>
 
                     <div className="product-desc">

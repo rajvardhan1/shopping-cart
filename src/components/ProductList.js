@@ -21,7 +21,7 @@ export default function ProductList() {
   };
    
   useEffect(()=>{
-    const url = `http://localhost:8000/get-products`
+    const url = `http://localhost:9000/get-products`
     axios.get(url)
     .then((res) => {
         setData(res.data)

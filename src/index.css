@@ -31,7 +31,12 @@ body{
   color: black;
   font-weight: 400;
 }
-
+.card-title{
+  margin-left: 23px;
+}
+.card-image{
+  padding: 20px !important;
+}
 .cart {
   width: inherit;
   margin-top: 40px;
@@ -75,7 +80,8 @@ body{
 }
 
 .collection .collection-product img{
-  width: 150px;
+  width: 200px;
+  height: 150px;
   margin-right: 25px;
 }
 
@@ -398,6 +404,15 @@ input:-internal-autofill-selected {
   background-color: white !important;
   background-image: none !important;
   color: -internal-light-dark(black, white) !important;
+}
+.card-img{
+  height: 200px;
+  width: 200px;
+}
+.btn-floating.halfway-fab {
+  position: absolute;
+  right: 24px;
+  bottom: 78px !important;
 }
 /* .payment-btn{
   display: inline-grid;

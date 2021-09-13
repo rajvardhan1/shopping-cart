@@ -386,7 +386,7 @@ const LinaerStepper = () => {
   },[])
 
   const handleCartDetails = (()=>{
-    const url = `http://localhost:8000/cart`
+    const url = `http://localhost:9000/cart`
     axios.get(url)
     .then((res) => {
       console.log('res',res);
@@ -414,7 +414,7 @@ const LinaerStepper = () => {
       "Content-Type": "application/json"
     }
     if (activeStep == steps.length - 1) {
-      return fetch(`http://localhost:8000/stripe-payment`, {
+      return fetch(`http://localhost:9000/stripe-payment`, {
         method: "POST",
         headers,
         body: JSON.stringify(body)
